@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="business.beans.MimeTypes" table="mime_types" catalog="contenidos">
+        <id name="mimTypPk" type="java.lang.Long">
+            <column name="mim_typ_pk" />
+            <generator class="identity" />
+        </id>
+        <property name="mimTypCode" type="string">
+            <column name="mim_typ_code" length="100" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

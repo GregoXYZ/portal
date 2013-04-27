@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grid 	name="gridBackEndMimeFiles" 
+		title="Tipos de archivos"
+		style="tablesorter marco" 
+		showAlertNoData="false" 
+		editable="false">
+
+	<bundle>i18n.grid</bundle>
+
+	<!-- <select-key>mimFilPk</select-key> -->
+
+	<column id="Tipo">
+		<header>Tipo</header>
+		<reference>mimFilExtension</reference>
+		<action name="editMimFil" 
+				param="mimFilPk" 
+				formname="editMimFil">
+		</action>
+		<icon>mimFilIcon</icon>
+	</column>
+	<column id="MimeFile">
+		<header>Mime File</header>
+		<reference>mimFilMime</reference>
+	</column>
+
+	<actions>
+		<row-action name="deleteMimFil" 
+					image="/portal/images/delete.png" 
+					message="Va eliminar el tipo de archivo.\n¿Desea continuar?" 
+					confirm="true">
+			<text>Borrar</text>
+			<title>Borrar tipo</title>
+			<style>action</style>
+			<param>mimFilPk</param>
+			<formname>deleteMimFil</formname>
+		</row-action>
+		<global-action 	name="newMimFil" 
+						image="/portal/images/add.png" >
+			<text>Nuevo</text>
+			<title>Nuenvo tipo</title>
+			<style>action</style>
+			<formname>newMimFil</formname>
+		</global-action>
+	</actions>
+</grid>

@@ -1,0 +1,109 @@
+<script type="text/javascript">
+	function sendEvent(formId,eventId,eventValue, id){
+		var now = new Date();
+		var ara = now.toUTCString();
+		var url = "${pageContext.request.contextPath}/gridAction.do?eventId=" + eventId + "&eventValue=" + eventValue +
+			"&gridId=${id}&ara=" + ara;
+
+		window.status = 'Opening node...';
+		
+		// Ejecutamos peticion al servidor
+		var resp = processAsincron(url);
+		
+		// Sustituimos contenido de la grid
+		if(!id) {
+			id = formId;
+		}
+		replaceGrid(resp, id);
+		
+		window.status = 'Open successfully';
+	}
+
+
+// Rutina para sustituir el contenido de la tree con la respuesta del servidor
+function replaceGrid (resp, id) {
+
+	// Localizamos div actual en el documento
+	var oldDivGrid = document.getElementById(id);
+
+	if (navigator.appName != "Microsoft Internet Explorer") {
+		// ***************
+		// *** Mozilla ***
+		// ***************
+		
+		// Accedemos a su padre
+		var parentElem = oldDivGrid.parentNode;
+					
+		// Accedemos al nodo del div
+		var xml = resp.responseXML;
+		var div = xml.documentElement;
+		
+		// Copiamos dentro del documento
+		var newDivGrid = copyElements(div);
+		
+		// Sustituimos nodos
+		parentElem.replaceChild(newDivGrid, oldDivGrid);
+		
+	} else {
+		// ************
+		// *** MSIE ***
+		// ************
+		var texto = resp.responseText;
+		var indice = texto.indexOf("]>");
+		if(indice>0) {
+			try {
+				texto = texto.substring(indice+2, texto.length);
+			} catch(err) {}
+		}
+		oldDivGrid.outerHTML = texto;
+	}
+	
+	// Funcion de copia recursiva de nodos
+	function copyElements (source) {
+	
+		var i=0;	// indice para bucles
+		
+		//alert('Creating ' + source.nodeName + ' element');
+		var target = document.createElement(source.nodeName);
+		
+		// Procesamos atributos
+		var attrs = source.attributes;
+		var attrsDesc = '';
+		
+		for (i=0; i<attrs.length; i++) {
+		
+			var node = attrs[i];
+			attrsDesc = attrsDesc + '\n' + node.nodeName + '=' + node.nodeValue;
+			
+			// Es un atributo
+			target.setAttribute(node.nodeName, node.nodeValue);
+		}
+		
+		//alert('Attrs OK:' + attrsDesc);
+		
+		// Procesamos hijos: Elementos y texto
+		var children = source.childNodes;
+		
+		for (i=0; i<children.length; i++) {
+			var node = children[i];
+			if (node.nodeType == 1) {
+				//alert('Processing child element');
+				// Es un elemento
+				var newElem = copyElements(node);
+				target.appendChild(newElem);
+				
+			} else if (node.nodeType == 3) {
+				// Es texto
+				//alert('Processing text: ' + node.nodeValue);
+				var text = document.createTextNode(node.nodeValue);
+				target.appendChild(text);
+			} else {
+				// Do nothing!
+			}
+		}
+		
+		//alert('Returning new node');
+		return target;
+	}
+}
+</script>

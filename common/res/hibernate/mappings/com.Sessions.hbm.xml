@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-ene-2009 19:22:13 by Hibernate Tools 3.2.4.CR1 -->
+<hibernate-mapping>
+    <class name="common.business.beans.Sessions" table="sessions" catalog="system">
+        <id name="sessionPk" type="java.lang.Long">
+            <column name="session_pk" />
+            <generator class="identity" />
+        </id>
+        <property name="sessionId" type="string">
+            <column name="session_id" length="50" />
+        </property>
+        <property name="shareSessionId" type="string">
+            <column name="share_session_id" length="50" />
+        </property>
+        <property name="validSession" type="char">
+            <column name="valid_session" length="1" not-null="true" />
+        </property>
+        <property name="address" type="string">
+            <column name="address" length="20" />
+        </property>
+        <property name="maxInactive" type="int">
+            <column name="max_inactive" not-null="true" />
+        </property>
+        <property name="creationTime" type="java.lang.Long">
+            <column name="creation_time" not-null="true" />
+        </property>
+        <property name="lastAccessedTime" type="java.lang.Long">
+            <column name="last_accessed_time" />
+        </property>
+        <property name="appName" type="string">
+            <column name="app_name" />
+        </property>
+        <property name="sessionData" type="binary">
+            <column name="session_data" />
+        </property>
+        <property name="userId" type="java.lang.Long">
+            <column name="user_id" not-null="true" />
+        </property>
+        <property name="closedTime" type="java.lang.Long">
+            <column name="closed_time" />
+        </property>
+    </class>
+</hibernate-mapping>

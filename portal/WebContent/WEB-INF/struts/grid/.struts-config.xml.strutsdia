@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="StrutsProcess">
+ <PROCESS-ITEM ID="#gridAction" NAME="action0" PATH="/gridAction"
+  SHAPE="32,176,120,41" TITLE="GridEventForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0"
+   PATH="/WEB-INF/jsp/common/repaintGrid.jsp" TARGET="page2"
+   TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page2" PATH="/WEB-INF/jsp/common/repaintGrid.jsp"
+  SHAPE="256,192,50,25" SUBTYPE="jsp" TITLE="repaintGrid.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="java.lang.Exception" NAME="exception0"
+  SHAPE="32,465,0,0" TITLE="Exception" TYPE="exception" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="errorNoControlado" NAME="forward0" PATH="/error.do"
+  SHAPE="32,241,0,0" TARGET="action1" TITLE="errorNoControlado"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="webError" NAME="forward1" PATH="/error.do"
+  SHAPE="32,353,0,0" TARGET="action1" TITLE="webError" TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#error" NAME="action1" PATH="/error"
+  SHAPE="240,353,0,0" TITLE="EmptyForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0" PATH="page.error"
+   TARGET="page0" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page0" PATH="page.error" SHAPE="448,353,0,0"
+  SUBTYPE="tile" TITLE="page.error" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#back" NAME="action2" PATH="/back"
+  SHAPE="240,481,0,0" TITLE="EmptyForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#empty" NAME="action3" PATH="/empty"
+  SHAPE="32,465,0,0" SUBTYPE="forward" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="action3" PATH="page.empty" TARGET="page1"
+   TITLE="forward" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page1" PATH="page.empty" SHAPE="240,594,0,0"
+  SUBTYPE="tile" TITLE="page.empty" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#infoweb" NAME="action4" PATH="/infoweb"
+  SHAPE="32,689,0,0" SUBTYPE="forward" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="action4" PATH="page.infoweb" TARGET="page3"
+   TITLE="forward" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page3" PATH="page.infoweb" SHAPE="240,706,0,0"
+  SUBTYPE="tile" TITLE="page.infoweb" TYPE="page" model-entity="StrutsProcessItem"/>
+</PROCESS>

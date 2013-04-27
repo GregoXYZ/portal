@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17-ene-2009 23:22:57 by Hibernate Tools 3.2.4.CR1 -->
+<hibernate-mapping>
+    <class name="business.beans.Carpetas" table="carpetas" catalog="contenidos">
+        <id name="carPk" type="java.lang.Long">
+            <column name="car_pk" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="assets" class="business.beans.Assets" fetch="select">
+            <column name="ass_fk" not-null="true" unique="true" />
+        </many-to-one>
+        <many-to-one name="carpetas" class="business.beans.Carpetas" fetch="select">
+            <column name="car_fk" />
+        </many-to-one>
+        <set name="ficheroses" inverse="true">
+            <key>
+                <column name="car_fk" not-null="true" />
+            </key>
+            <one-to-many class="business.beans.Ficheros" />
+        </set>
+        <set name="carpetases" inverse="true">
+            <key>
+                <column name="car_fk" />
+            </key>
+            <one-to-many class="business.beans.Carpetas" />
+        </set>
+    </class>
+</hibernate-mapping>

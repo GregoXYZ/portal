@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 18-dic-2008 19:43:53 by Hibernate Tools 3.2.4.CR1 -->
+<hibernate-mapping>
+    <class name="common.business.beans.Urls" table="urls" catalog="system">
+        <id name="urlPk" type="java.lang.Long">
+            <column name="url_pk" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="zonas" class="common.business.beans.Zonas" fetch="select">
+            <column name="zon_fk" not-null="true" />
+        </many-to-one>
+        <property name="urlUkCodigo" type="string">
+            <column name="url_uk_codigo" length="20" not-null="true" />
+        </property>
+        <property name="urlDescripcion" type="string">
+            <column name="url_descripcion" length="200" not-null="true" />
+        </property>
+        <property name="urlDireccion" type="string">
+            <column name="url_direccion" length="200" not-null="true" />
+        </property>
+        <set name="urlsGruposes" inverse="true">
+            <key>
+                <column name="url_fk" not-null="true" />
+            </key>
+            <one-to-many class="common.business.beans.UrlsGrupos" />
+        </set>
+        <set name="menuses" inverse="true">
+            <key>
+                <column name="url_fk" />
+            </key>
+            <one-to-many class="common.business.beans.Menus" />
+        </set>
+    </class>
+</hibernate-mapping>

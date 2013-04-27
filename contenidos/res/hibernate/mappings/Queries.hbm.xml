@@ -1,0 +1,673 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17-dic-2008 22:46:15 by Hibernate Tools 3.2.4.CR1 -->
+<hibernate-mapping> 
+ <sql-query name="Contenidos.carpetas">
+	<return-scalar column="ass_pk" type="java.lang.Long"/>
+	<return-scalar column="ass_nombre" type="string"/>
+	<return-scalar column="ass_descripcion" type="string"/>
+	<return-scalar column="ass_fecha_alta" type="java.lang.Long"/>
+	<return-scalar column="usu_fk" type="java.lang.Long"/>
+	<return-scalar column="car_fk" type="java.lang.Long"/>
+	<return-scalar column="car_pk" type="java.lang.Long"/>
+   	<![CDATA[     
+			SELECT 
+				c.ass_pk, 
+				c.ass_nombre, 
+				c.ass_descripcion,
+				c.ass_fecha_alta, 
+				c.usu_fk,
+				c.car_fk,
+				c.car_pk
+			FROM carpetas_view c
+			WHERE c.usu_fk = :user
+			  AND c.car_fk = :folder
+		 ORDER BY c.ass_nombre
+		]]>
+ </sql-query> 
+ <sql-query name="Contenidos.carpetas.nullfolder">
+	<return-scalar column="ass_pk" type="java.lang.Long"/>
+	<return-scalar column="ass_nombre" type="string"/>
+	<return-scalar column="ass_descripcion" type="string"/>
+	<return-scalar column="ass_fecha_alta" type="java.lang.Long"/>
+	<return-scalar column="usu_fk" type="java.lang.Long"/>
+	<return-scalar column="car_fk" type="java.lang.Long"/>
+	<return-scalar column="car_pk" type="java.lang.Long"/>
+   	<![CDATA[     
+			SELECT 
+				c.ass_pk, 
+				c.ass_nombre, 
+				c.ass_descripcion, 
+				c.ass_fecha_alta, 
+				c.usu_fk,
+				c.car_fk,
+				c.car_pk
+			FROM carpetas_view c
+			WHERE c.usu_fk = :user
+			  AND c.car_fk is null
+		 ORDER BY c.ass_nombre
+		]]>
+ </sql-query> 
+ <sql-query name="Contenidos.ficheros">
+	<return-scalar column="ass_pk" type="java.lang.Long"/>
+	<return-scalar column="ass_nombre" type="string"/>
+	<return-scalar column="ass_descripcion" type="string"/>
+	<return-scalar column="ass_fecha_alta" type="java.lang.Long"/>
+	<return-scalar column="fic_pk" type="java.lang.Long"/>
+	<return-scalar column="fic_size" type="java.lang.Long"/>
+	<return-scalar column="car_fk" type="java.lang.Long"/>
+	<return-scalar column="mim_fil_fk" type="java.lang.Long"/>
+	<return-scalar column="mim_fil_extension" type="string"/>
+	<return-scalar column="mim_fil_mime" type="string"/>
+	<return-scalar column="fic_sysname" type="string"/>
+	<return-scalar column="usu_fk" type="java.lang.Long"/>
+   	<![CDATA[     
+			SELECT 
+				f.ass_pk, 
+				f.ass_nombre, 
+				f.ass_descripcion, 
+				f.ass_fecha_alta, 
+				f.fic_pk,
+				f.fic_size, 
+				f.car_fk, 
+				f.mim_fil_fk,
+				f.mim_fil_extension, 
+				f.mim_fil_mime, 
+				f.fic_sysname, 
+				f.usu_fk  
+			FROM ficheros_view f
+			WHERE f.usu_fk = :user
+			  AND f.car_fk = :folder
+		 ORDER BY f.ass_fecha_alta DESC
+		]]>
+ </sql-query> 
+ <sql-query name="Contenidos.ficheros.nullfolder">
+	<return-scalar column="ass_pk" type="java.lang.Long"/>
+	<return-scalar column="ass_nombre" type="string"/>
+	<return-scalar column="ass_descripcion" type="string"/>
+	<return-scalar column="ass_fecha_alta" type="java.lang.Long"/>
+	<return-scalar column="fic_pk" type="java.lang.Long"/>
+	<return-scalar column="fic_size" type="java.lang.Long"/>
+	<return-scalar column="car_fk" type="java.lang.Long"/>
+	<return-scalar column="mim_fil_fk" type="java.lang.Long"/>
+	<return-scalar column="mim_fil_extension" type="string"/>
+	<return-scalar column="mim_fil_mime" type="string"/>
+	<return-scalar column="fic_sysname" type="string"/>
+	<return-scalar column="usu_fk" type="java.lang.Long"/>
+   	<![CDATA[     
+			SELECT 
+				f.ass_pk, 
+				f.ass_nombre, 
+				f.ass_descripcion, 
+				f.ass_fecha_alta, 
+				f.fic_pk,
+				f.fic_size, 
+				f.car_fk, 
+				f.mim_fil_fk, 
+				f.mim_fil_extension, 
+				f.mim_fil_mime, 
+				f.fic_sysname, 
+				f.usu_fk  
+			FROM ficheros_view f
+			WHERE f.usu_fk = :user
+			  AND f.car_fk is null
+		 ORDER BY f.ass_fecha_alta DESC
+		]]>
+ </sql-query> 
+ <sql-query name="Contenidos.cuotarestante">
+ 	<return alias="r" class="business.beans.Cuotas"/>
+   	<![CDATA[     
+			SELECT 
+				c.usu_fk as usu_Fk_Pk, 
+				c.cuo_cuota_disk,
+				c.cuo_cuota_file
+			FROM cuotas_view c
+			WHERE c.usu_fk = :user
+		]]>
+ </sql-query>
+ <sql-query name="Contenidos.file_compartidos">
+	<return-scalar column="ass_pk" type="java.lang.Long"/>
+	<return-scalar column="ass_nombre" type="string"/>
+	<return-scalar column="ass_descripcion" type="string"/>
+	<return-scalar column="com_fecha_alta" type="java.lang.Long"/>
+	<return-scalar column="fic_pk" type="java.lang.Long"/>
+	<return-scalar column="fic_size" type="java.lang.Long"/>
+	<return-scalar column="car_fk" type="java.lang.Long"/>
+	<return-scalar column="mim_fil_pk" type="java.lang.Long"/>
+	<return-scalar column="mim_fil_extension" type="string"/>
+	<return-scalar column="mim_fil_mime" type="string"/>
+	<return-scalar column="fic_sysname" type="string"/>
+	<return-scalar column="usu_fk" type="java.lang.Long"/>
+   	<![CDATA[     
+			SELECT  a.ass_pk, 
+					a.ass_nombre, 
+					a.ass_descripcion, 
+					c.com_fecha_alta, 
+					f.fic_pk,
+					f.fic_size, 
+					f.car_fk, 
+					m.mim_fil_pk,
+					m.mim_fil_extension, 
+					m.mim_fil_mime, 
+					f.fic_sysname, 
+					a.usu_fk  
+			FROM 	contenidos.assets a,
+					contenidos.compartidos c,
+					contenidos.ficheros f,
+					contenidos.mime_files m
+			WHERE 	a.ass_pk = c.ass_fk AND 
+					a.ass_pk = f.ass_fk AND
+					m.mim_fil_pk = f.mim_fil_fk AND
+					c.usu_fk = :user AND
+					a.usu_fk = :propietario
+		   ORDER BY c.com_fecha_alta DESC
+		]]>
+ </sql-query> 
+
+ <sql-query name="Contenidos.file_compartidos_folder">
+	<return-scalar column="ass_pk" type="java.lang.Long"/>
+	<return-scalar column="ass_nombre" type="string"/>
+	<return-scalar column="ass_descripcion" type="string"/>
+	<return-scalar column="com_fecha_alta" type="java.lang.Long"/>
+	<return-scalar column="fic_pk" type="java.lang.Long"/>
+	<return-scalar column="fic_size" type="java.lang.Long"/>
+	<return-scalar column="car_fk" type="java.lang.Long"/>
+	<return-scalar column="mim_fil_pk" type="java.lang.Long"/>
+	<return-scalar column="mim_fil_extension" type="string"/>
+	<return-scalar column="mim_fil_mime" type="string"/>
+	<return-scalar column="fic_sysname" type="string"/>
+	<return-scalar column="usu_fk" type="java.lang.Long"/>
+   	<![CDATA[     
+			SELECT  a.ass_pk, 
+					a.ass_nombre, 
+					a.ass_descripcion, 
+					c.com_fecha_alta, 
+					f.fic_pk,
+					f.fic_size, 
+					f.car_fk, 
+					m.mim_fil_pk,
+					m.mim_fil_extension, 
+					m.mim_fil_mime, 
+					f.fic_sysname, 
+					a.usu_fk  
+			FROM 	contenidos.assets a,
+					contenidos.compartidos c,
+					contenidos.ficheros f,
+					contenidos.mime_files m
+			WHERE 	a.ass_pk = c.ass_fk AND 
+					a.ass_pk = f.ass_fk AND
+					m.mim_fil_pk = f.mim_fil_fk AND
+					c.usu_fk = :user AND
+					a.usu_fk = :propietario AND
+					f.car_fk = :folder
+		   ORDER BY c.com_fecha_alta DESC
+		]]>
+ </sql-query> 
+
+ <sql-query name="Contenidos.file_compartidos_null_folder">
+	<return-scalar column="ass_pk" type="java.lang.Long"/>
+	<return-scalar column="ass_nombre" type="string"/>
+	<return-scalar column="ass_descripcion" type="string"/>
+	<return-scalar column="com_fecha_alta" type="java.lang.Long"/>
+	<return-scalar column="fic_pk" type="java.lang.Long"/>
+	<return-scalar column="fic_size" type="java.lang.Long"/>
+	<return-scalar column="car_fk" type="java.lang.Long"/>
+	<return-scalar column="mim_fil_pk" type="java.lang.Long"/>
+	<return-scalar column="mim_fil_extension" type="string"/>
+	<return-scalar column="mim_fil_mime" type="string"/>
+	<return-scalar column="fic_sysname" type="string"/>
+	<return-scalar column="usu_fk" type="java.lang.Long"/>
+   	<![CDATA[     
+			SELECT  a.ass_pk, 
+					a.ass_nombre, 
+					a.ass_descripcion, 
+					c.com_fecha_alta, 
+					f.fic_pk,
+					f.fic_size, 
+					f.car_fk, 
+					m.mim_fil_pk,
+					m.mim_fil_extension, 
+					m.mim_fil_mime, 
+					f.fic_sysname, 
+					a.usu_fk  
+			FROM 	contenidos.assets a,
+					contenidos.compartidos c,
+					contenidos.ficheros f,
+					contenidos.mime_files m
+			WHERE 	a.ass_pk = c.ass_fk AND 
+					a.ass_pk = f.ass_fk AND
+					m.mim_fil_pk = f.mim_fil_fk AND
+					c.usu_fk = :user AND
+					a.usu_fk = :propietario AND
+					f.car_fk is null
+		   ORDER BY c.com_fecha_alta DESC
+		]]>
+ </sql-query> 
+
+ <sql-query name="Contenidos.my_file_compartidos">
+	<return-scalar column="ass_pk" type="java.lang.Long"/>
+	<return-scalar column="ass_nombre" type="string"/>
+	<return-scalar column="ass_descripcion" type="string"/>
+	<return-scalar column="ass_fecha_alta" type="java.lang.Long"/>
+	<return-scalar column="fic_pk" type="java.lang.Long"/>
+	<return-scalar column="fic_size" type="java.lang.Long"/>
+	<return-scalar column="car_fk" type="java.lang.Long"/>
+	<return-scalar column="mim_fil_pk" type="java.lang.Long"/>
+	<return-scalar column="mim_fil_extension" type="string"/>
+	<return-scalar column="mim_fil_mime" type="string"/>
+	<return-scalar column="fic_sysname" type="string"/>
+	<return-scalar column="usu_fk" type="java.lang.Long"/>
+   	<![CDATA[     
+			SELECT  a.ass_pk, 
+					a.ass_nombre, 
+					a.ass_descripcion, 
+					a.ass_fecha_alta, 
+					f.fic_pk,
+					f.fic_size, 
+					f.car_fk, 
+					m.mim_fil_pk,
+					m.mim_fil_extension, 
+					m.mim_fil_mime, 
+					f.fic_sysname, 
+					a.usu_fk  
+			FROM 	contenidos.assets a,
+					contenidos.ficheros f,
+					contenidos.mime_files m
+			WHERE 	a.ass_pk = f.ass_fk AND
+					m.mim_fil_pk = f.mim_fil_fk AND
+					a.usu_fk = :user AND
+					EXISTS (SELECT  '1' FROM contenidos.compartidos c
+					 		WHERE 	a.ass_pk = c.ass_fk)	
+		   ORDER BY a.ass_fecha_alta DESC
+		]]>
+ </sql-query> 
+
+ <sql-query name="Contenidos.my_file_compartidos_folder">
+	<return-scalar column="ass_pk" type="java.lang.Long"/>
+	<return-scalar column="ass_nombre" type="string"/>
+	<return-scalar column="ass_descripcion" type="string"/>
+	<return-scalar column="ass_fecha_alta" type="java.lang.Long"/>
+	<return-scalar column="fic_pk" type="java.lang.Long"/>
+	<return-scalar column="fic_size" type="java.lang.Long"/>
+	<return-scalar column="car_fk" type="java.lang.Long"/>
+	<return-scalar column="mim_fil_pk" type="java.lang.Long"/>
+	<return-scalar column="mim_fil_extension" type="string"/>
+	<return-scalar column="mim_fil_mime" type="string"/>
+	<return-scalar column="fic_sysname" type="string"/>
+	<return-scalar column="usu_fk" type="java.lang.Long"/>
+   	<![CDATA[     
+			SELECT  a.ass_pk, 
+					a.ass_nombre, 
+					a.ass_descripcion, 
+					a.ass_fecha_alta, 
+					f.fic_pk,
+					f.fic_size, 
+					f.car_fk, 
+					m.mim_fil_pk,
+					m.mim_fil_extension, 
+					m.mim_fil_mime, 
+					f.fic_sysname, 
+					a.usu_fk  
+			FROM 	contenidos.assets a,
+					contenidos.ficheros f,
+					contenidos.mime_files m
+			WHERE 	a.ass_pk = f.ass_fk AND
+					m.mim_fil_pk = f.mim_fil_fk AND
+					a.usu_fk = :user AND
+					f.car_fk = :folder AND 
+					EXISTS (SELECT  '1' FROM contenidos.compartidos c
+					 		WHERE 	a.ass_pk = c.ass_fk)	
+		   ORDER BY a.ass_fecha_alta DESC
+		]]>
+ </sql-query> 
+
+ <sql-query name="Contenidos.my_file_compartidos_null_folder">
+	<return-scalar column="ass_pk" type="java.lang.Long"/>
+	<return-scalar column="ass_nombre" type="string"/>
+	<return-scalar column="ass_descripcion" type="string"/>
+	<return-scalar column="ass_fecha_alta" type="java.lang.Long"/>
+	<return-scalar column="fic_pk" type="java.lang.Long"/>
+	<return-scalar column="fic_size" type="java.lang.Long"/>
+	<return-scalar column="car_fk" type="java.lang.Long"/>
+	<return-scalar column="mim_fil_pk" type="java.lang.Long"/>
+	<return-scalar column="mim_fil_extension" type="string"/>
+	<return-scalar column="mim_fil_mime" type="string"/>
+	<return-scalar column="fic_sysname" type="string"/>
+	<return-scalar column="usu_fk" type="java.lang.Long"/>
+   	<![CDATA[     
+			SELECT  a.ass_pk, 
+					a.ass_nombre, 
+					a.ass_descripcion, 
+					a.ass_fecha_alta, 
+					f.fic_pk,
+					f.fic_size, 
+					f.car_fk, 
+					m.mim_fil_pk,
+					m.mim_fil_extension, 
+					m.mim_fil_mime, 
+					f.fic_sysname, 
+					a.usu_fk  
+			FROM 	contenidos.assets a,
+					contenidos.ficheros f,
+					contenidos.mime_files m
+			WHERE 	a.ass_pk = f.ass_fk AND
+					m.mim_fil_pk = f.mim_fil_fk AND
+					a.usu_fk = :user AND
+					f.car_fk is null AND 
+					EXISTS (SELECT  '1' FROM contenidos.compartidos c
+					 		WHERE 	a.ass_pk = c.ass_fk)	
+		   ORDER BY a.ass_fecha_alta DESC
+		]]>
+ </sql-query> 
+
+ <sql-query name="Contenidos.carpetas_con_compartidos">
+	<return-scalar column="car_pk" type="java.lang.Long"/>
+	<return-scalar column="ass_pk" type="java.lang.Long"/>
+	<return-scalar column="ass_nombre" type="string"/>
+	<return-scalar column="ass_descripcion" type="string"/>
+	<return-scalar column="ass_fecha_alta" type="java.lang.Long"/>
+   	<![CDATA[     
+			SELECT  c.car_pk,
+					a.ass_pk, 
+					a.ass_nombre, 
+					a.ass_descripcion,
+					a.ass_fecha_alta 
+			FROM 	contenidos.assets a,
+					contenidos.carpetas c
+			WHERE	a.ass_pk = c.ass_fk AND
+					EXISTS ( SELECT '1'
+							 FROM	contenidos.assets a2,
+									contenidos.compartidos co,
+									contenidos.ficheros f
+							WHERE 	a2.ass_pk = co.ass_fk AND 
+									a2.ass_pk = f.ass_fk AND
+									f.car_fk = c.car_pk AND
+									co.usu_fk = :user AND
+									a2.usu_fk = :propietario
+								)
+		   ORDER BY a.ass_fecha_alta DESC
+		]]>
+ </sql-query> 
+
+ <sql-query name="Contenidos.my_carpetas_compartidas">
+	<return-scalar column="car_pk" type="java.lang.Long"/>
+	<return-scalar column="ass_pk" type="java.lang.Long"/>
+	<return-scalar column="ass_nombre" type="string"/>
+	<return-scalar column="ass_descripcion" type="string"/>
+	<return-scalar column="ass_fecha_alta" type="java.lang.Long"/>
+   	<![CDATA[     
+			SELECT  c.car_pk,
+					a.ass_pk, 
+					a.ass_nombre, 
+					a.ass_descripcion,
+					a.ass_fecha_alta 
+			FROM 	contenidos.assets a,
+					contenidos.carpetas c
+			WHERE	a.ass_pk = c.ass_fk AND
+					a.usu_fk = :user AND
+					EXISTS ( SELECT '1'
+							 FROM	contenidos.compartidos co,
+									contenidos.ficheros f
+							 WHERE 	co.ass_fk = f.ass_fk AND
+									f.car_fk = c.car_pk
+						)
+		   ORDER BY a.ass_fecha_alta DESC
+		]]>
+ </sql-query> 
+
+ <sql-query name="Contenidos.users_contenidos">
+ 	<return alias="r" class="common.business.beans.Usuarios"/>
+   	<![CDATA[     
+		SELECT 	u.*
+		FROM 	system.grupos g, 
+				system.usuarios_activos_view u, 
+				system.usuarios_grupos ug 
+		WHERE 	u.usu_pk = ug.usu_fk AND
+				g.gru_pk = ug.gru_fk AND
+				g.gru_uk_codigo in ('contenidos', 'compartidos')
+	  ORDER BY  u.usu_nombre, 
+				u.usu_apellido1, 
+				u.usu_apellido2
+		]]>
+ </sql-query> 
+
+ <sql-query name="Contenidos.users_contenidos_relacionados">
+ 	<return alias="r" class="common.business.beans.Usuarios"/>
+   	<![CDATA[     
+		SELECT 	u.*
+		FROM 	system.grupos g, 
+				system.usuarios_activos_view u, 
+				system.usuarios_grupos ug 
+		WHERE 	u.usu_pk = ug.usu_fk AND
+				g.gru_pk = ug.gru_fk AND
+				g.gru_uk_codigo in ('contenidos', 'compartidos') AND
+				u.usu_pk != :user AND
+				EXISTS (
+					SELECT 	'1' 
+					FROM 	system.relaciones_usuarios r
+					WHERE	(r.usu_1_fk = :user OR usu_2_fk = :user) AND
+							(u.usu_pk = r.usu_1_fk OR u.usu_pk = usu_2_fk) AND
+							r.est_rel_usu_fk = 2
+					)
+	  ORDER BY  u.usu_nombre, 
+				u.usu_apellido1, 
+				u.usu_apellido2
+
+		]]>
+ </sql-query> 
+
+ <sql-query name="Contenidos.users_comparten">
+ 	<return alias="r" class="common.business.beans.Usuarios"/>
+   	<![CDATA[     
+		SELECT 	u.*
+		FROM 	system.usuarios_activos_view u
+		WHERE 	EXISTS (SELECT 	'1' 
+						FROM 	assets a, 
+				       			contenidos.compartidos c
+						WHERE  	c.ass_fk = a.ass_pk 	AND 
+								c.usu_fk = :user 		AND
+								a.usu_fk = u.usu_pk)
+	   ORDER BY u.usu_nombre, 
+				u.usu_apellido1, 
+				u.usu_apellido2
+		]]>
+ </sql-query> 
+
+ <sql-query name="Contenidos.assets_compartidos">
+ 	<return alias="r" class="business.beans.Assets"/>
+   	<![CDATA[     
+		SELECT 	a.* 
+		FROM 	system.usuarios_activos_view u,
+				contenidos.assets a, 
+				contenidos.compartidos c 
+		WHERE 	u.usu_pk = a.usu_fk AND
+				a.ass_pk = c.ass_fk AND
+				c.usu_fk = :user AND 
+				u.usu_pk = :propietario
+	   ORDER BY a.ass_fecha_alta DESC
+		]]>
+ </sql-query> 
+
+ <sql-query name="Contenidos.tags_asset">
+ 	<return alias="r" class="business.beans.Tags"/>
+   	<![CDATA[     
+		SELECT 	t.* 
+		FROM 	contenidos.tags t 
+		WHERE 	EXISTS (SELECT 	'1'
+						FROM 	contenidos.tags_asset ta
+						WHERE	ta.tag_fk = t.tag_pk
+						AND		ta.ass_fk = :asset
+						AND		ta.usu_fk = :user
+						)
+		ORDER BY t.tag_uk_codigo
+		]]>
+ </sql-query> 
+
+ <sql-query name="Contenidos.links_asset">
+ 	<return alias="r" class="business.beans.Assets"/>
+   	<![CDATA[     
+		SELECT 	a.*
+		FROM	contenidos.assets a
+		WHERE	a.usu_fk = :user
+		AND		EXISTS (SELECT 	'1'
+						FROM	contenidos.links l
+						WHERE	l.ass_fk = a.ass_pk
+						AND		l.ass_fk_ref = :asset
+						)
+		]]>
+ </sql-query>
+ 
+ <sql-query name="Contenidos.tags_nube">
+	<return-scalar column="tag_pk" type="java.lang.Long"/>
+	<return-scalar column="tag_uk_codigo" type="string"/>
+	<return-scalar column="contador" type="java.lang.Long"/>
+   	<![CDATA[     
+		SELECT t.tag_pk, t.tag_uk_codigo, count(*) contador
+		FROM contenidos.tags_asset ta,
+		     contenidos.tags t,
+		     contenidos.assets a
+		WHERE ta.tag_fk = t.tag_pk
+		AND   ta.ass_fk = a.ass_pk
+		AND   (a.usu_fk = :user
+		OR     EXISTS (SELECT '1' 
+		               FROM contenidos.compartidos c 
+		               WHERE c.ass_fk = a.ass_pk
+		               AND   c.usu_fk = :user
+		              )
+		      )
+		GROUP BY t.tag_pk, t.tag_uk_codigo 
+		]]>
+ </sql-query>
+ <sql-query name="Contenidos.tags_total_count">
+	<return-scalar column="tag_pk" type="java.lang.Long"/>
+	<return-scalar column="tag_uk_codigo" type="string"/>
+	<return-scalar column="tag_count" type="java.lang.Long"/>
+   	<![CDATA[     
+		SELECT 	t.tag_pk, 
+				t.tag_uk_codigo, 
+				t.tag_count
+		FROM contenidos.tags_asset ta,
+		     contenidos.tags t,
+		     contenidos.assets a
+		WHERE ta.tag_fk = t.tag_pk
+		AND   ta.ass_fk = a.ass_pk
+		AND   (a.usu_fk = :user
+		OR     EXISTS (SELECT '1' 
+		               FROM contenidos.compartidos c 
+		               WHERE c.ass_fk = a.ass_pk
+		               AND   c.usu_fk = :user
+		              )
+		      )
+		GROUP BY t.tag_pk, t.tag_uk_codigo 
+		]]>
+ </sql-query>
+ <sql-query name="Contenidos.personal_tags_count">
+	<return-scalar column="tag_pk" type="java.lang.Long"/>
+	<return-scalar column="tag_uk_codigo" type="string"/>
+	<return-scalar column="cantidad" type="java.lang.Long"/>
+   	<![CDATA[     
+		SELECT	t.tag_pk, 
+				t.tag_uk_codigo, 
+				count(*) cantidad 
+		FROM	contenidos.busquedas_personales bp,
+				contenidos.tags t
+		WHERE	bp.tag_fk = t.tag_pk
+		AND		bp.usu_fk = :user
+		AND		(
+				EXISTS (SELECT '1'
+					FROM	contenidos.assets a,
+							contenidos.tags_asset ta
+					WHERE	ta.ass_fk = a.ass_pk
+					AND		ta.tag_fk = t.tag_pk
+					AND		a.usu_fk = :user
+					)
+				OR
+				EXISTS (SELECT '1'
+					FROM	contenidos.compartidos c,
+							contenidos.tags_asset ta
+					WHERE	ta.tag_fk = t.tag_pk
+					AND		c.ass_fk = ta.ass_fk
+					AND		c.usu_fk = :user
+					)
+				)
+		GROUP BY t.tag_pk, t.tag_uk_codigo 
+		]]>
+ </sql-query>
+
+ <sql-query name="Contenidos.assets_tag">
+ 	<return alias="r" class="business.beans.Assets"/>
+   	<![CDATA[     
+		SELECT	a.* 
+		FROM 	contenidos.assets a
+		WHERE 	EXISTS (SELECT 	'1'
+						FROM	contenidos.tags_asset ta
+						WHERE 	ta.ass_fk = a.ass_pk
+						AND		ta.tag_fk = :tag
+						)
+		AND   (a.usu_fk = :user
+		OR		EXISTS (SELECT 	'1' 
+						FROM 	contenidos.compartidos c 
+						WHERE 	c.ass_fk = a.ass_pk
+						AND   	c.usu_fk = :user
+						)
+				)
+	]]>
+ </sql-query>
+ <sql-query name="Contenidos.ficheros_tag">
+ 	<return alias="r" class="business.beans.Ficheros"/>
+   	<![CDATA[     
+		SELECT	f.* 
+		FROM 	contenidos.ficheros f,
+				contenidos.assets a
+		WHERE 	f.ass_fk = a.ass_pk
+		AND		EXISTS (SELECT 	'1'
+						FROM	contenidos.tags_asset ta
+						WHERE 	ta.ass_fk = a.ass_pk
+						AND		ta.tag_fk = :tag
+						)
+		AND		(a.usu_fk = :user
+		OR		EXISTS (SELECT 	'1' 
+						FROM 	contenidos.compartidos c 
+						WHERE 	c.ass_fk = a.ass_pk
+						AND   	c.usu_fk = :user
+						)
+				)
+	]]>
+ </sql-query>		
+ <sql-query name="Contenidos.busca_ficheros">
+ 	<return alias="r" class="business.beans.Ficheros"/>
+   	<![CDATA[     
+		SELECT	f.* 
+		FROM 	contenidos.ficheros f,
+				contenidos.assets a
+		WHERE 	f.ass_fk = a.ass_pk
+		AND   	(a.usu_fk = :user
+		OR		EXISTS (SELECT 	'1' 
+						FROM 	contenidos.compartidos c 
+						WHERE 	c.ass_fk = a.ass_pk
+						AND   	c.usu_fk = :user
+						)
+				)
+	]]>
+ </sql-query>
+ <sql-query name="Contenidos.ficheros_dupicados">
+ 	<return alias="r" class="business.beans.Ficheros"/>
+   	<![CDATA[     
+		SELECT  fic.*
+		FROM 	ficheros fic,
+				assets ass
+		WHERE 	ass.ass_pk = fic.ass_fk
+		AND		ass.usu_fk = :user
+		AND		EXISTS (
+					SELECT '1'
+					FROM ficheros fi
+					WHERE fi.fic_checksum = fic.fic_checksum
+					GROUP BY fi.fic_checksum
+					HAVING count(*) > 1
+				)
+		ORDER BY fic.fic_checksum
+	]]>
+ </sql-query>
+
+</hibernate-mapping>

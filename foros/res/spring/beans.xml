@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<!-- Recursos comunes -->
+	<import resource="common/beans.xml" />
+
+	<!-- Business objects -->
+	<bean id="EntradasBO" class="business.bo.impl.EntradasBOImpl">
+	</bean>
+	<bean id="ContenidosBO" class="business.bo.impl.ContenidosBOImpl">
+	</bean>
+	<bean id="DestinosBO" class="business.bo.impl.DestinosBOImpl">
+	</bean>
+	<bean id="ParametrosBO" class="business.bo.impl.ParametrosBOImpl">
+	</bean>
+	<bean id="QueriesForosBO" class="business.bo.impl.QueriesForosBOImpl">
+	</bean>
+</beans>

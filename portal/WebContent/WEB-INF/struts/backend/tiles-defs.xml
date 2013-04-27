@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+                                   "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+<tiles-definitions>
+	<!-- Definición de layouts -->
+	<definition name="layouts.defaultLayout" path="/WEB-INF/jsp/common/layouts/default.jsp">
+		<put name="title" value="title.empty"/>
+		<put name="encabezado" value="/WEB-INF/jsp/common/header.jsp"/>
+		<put name="menu" value="/WEB-INF/jsp/common/menu.jsp"/>
+		<put name="principal" value="/WEB-INF/jsp/common/empty.jsp"/>
+		<put name="footer" value="/WEB-INF/jsp/common/footer.jsp"/>
+	</definition>
+	<definition name="layouts.single" path="/WEB-INF/jsp/common/layouts/single.jsp">
+		<put name="principal" value="/WEB-INF/jsp/common/empty.jsp" />
+	</definition>
+	 
+	<!-- Definición de páginas --> 
+	<definition name="page.empty" path="/WEB-INF/jsp/common/empty.jsp"/>
+	<definition name="page.nobrowser" path="/WEB-INF/jsp/common/nobrowser.jsp"/>
+	<definition name="page.infoweb" path="/WEB-INF/jsp/common/infoweb.jsp"/>
+	
+	<definition extends="layouts.defaultLayout" name="page.home">
+	 <put name="principal" value="/index.jsp"/>
+	</definition>
+	
+	<definition extends="layouts.defaultLayout" name="page.backenduserlist">
+	 <put name="principal" value="/WEB-INF/jsp/backend/usuarios.jsp"/>
+	</definition>
+	<definition extends="layouts.single" name="page.singleuserlist">
+	 <put name="principal" value="/WEB-INF/jsp/backend/usuarios.jsp"/>
+	</definition>
+	<definition extends="layouts.defaultLayout" name="page.backendgrouplist">
+	 <put name="principal" value="/WEB-INF/jsp/backend/grupos.jsp"/>
+	</definition>
+	<definition extends="layouts.defaultLayout" name="page.backendmenulist">
+	 <put name="principal" value="/WEB-INF/jsp/backend/menus.jsp"/>
+	</definition>
+	<definition extends="layouts.defaultLayout" name="page.backendurllist">
+	 <put name="principal" value="/WEB-INF/jsp/backend/urls.jsp"/>
+	</definition>
+	<definition extends="layouts.defaultLayout" name="page.backendzonalist">
+	 <put name="principal" value="/WEB-INF/jsp/backend/zonas.jsp"/>
+	</definition>
+	<definition extends="layouts.defaultLayout" name="page.backendbuglist">
+	 <put name="principal" value="/WEB-INF/jsp/backend/bugs.jsp"/>
+	</definition>
+	
+	<definition extends="layouts.single" name="page.edituser">
+	 <put name="principal" value="/WEB-INF/jsp/backend/edituser.jsp"/>
+	</definition>
+	<definition extends="layouts.single" name="page.editgroup">
+	 <put name="principal" value="/WEB-INF/jsp/backend/editgroup.jsp"/>
+	</definition>
+	<definition extends="layouts.single" name="page.editmenu">
+	 <put name="principal" value="/WEB-INF/jsp/backend/editmenu.jsp"/>
+	</definition>
+	<definition extends="layouts.single" name="page.editzona">
+	 <put name="principal" value="/WEB-INF/jsp/backend/editzona.jsp"/>
+	</definition>
+	<definition extends="layouts.single" name="page.editurl">
+	 <put name="principal" value="/WEB-INF/jsp/backend/editurl.jsp"/>
+	</definition>
+	<definition extends="layouts.single" name="page.editbug">
+	 <put name="principal" value="/WEB-INF/jsp/backend/editbug.jsp"/>
+	</definition>
+	
+	<definition extends="layouts.single" name="page.underconstruction">
+		<put name="principal" value="/WEB-INF/jsp/common/underconstruction.jsp"/>
+	</definition>
+	
+	<definition extends="layouts.single" name="page.error">
+		<put name="principal" value="/WEB-INF/jsp/common/error.jsp"/>
+	</definition>
+	<definition extends="layouts.defaultLayout" name="page.errorpage">
+		<put name="principal" value="/WEB-INF/jsp/common/errorpage.jsp"/>
+	</definition>
+</tiles-definitions>

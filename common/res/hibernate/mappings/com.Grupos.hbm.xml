@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 18-dic-2008 23:26:54 by Hibernate Tools 3.2.4.CR1 -->
+<hibernate-mapping>
+    <class name="common.business.beans.Grupos" table="grupos" catalog="system">
+        <id name="gruPk" type="java.lang.Long">
+            <column name="gru_pk" />
+            <generator class="identity" />
+        </id>
+        <property name="gruUkCodigo" type="string">
+            <column name="gru_uk_codigo" length="100" not-null="true" unique="true" />
+        </property>
+        <property name="gruDescripcion" type="string">
+            <column name="gru_descripcion" length="200" not-null="true" />
+        </property>
+        <property name="gruPrioridad" type="int">
+            <column name="gru_prioridad" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

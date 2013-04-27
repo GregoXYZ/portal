@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib version="2.1" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee web-jsptaglibrary_2_1.xsd">
+	<display-name>Contenidos Components</display-name>
+	<tlib-version>1.0</tlib-version>
+	<short-name>contenidos</short-name>
+	<uri>/tld/contenidos</uri>
+	<description></description>
+
+	<tag>
+		<name>path</name>
+		<tagclass>presentation.web.tld.PathTag</tagclass>
+		<bodycontent>empty</bodycontent>
+		<description> </description>
+		<attribute>
+			<name>carpeta</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>assets</name>
+		<tagclass>presentation.web.tld.AssetsTag</tagclass>
+		<bodycontent>empty</bodycontent>
+		<description> </description>
+		<attribute>
+			<name>elements</name>
+			<required>true</required>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>writeAsset</name>
+		<tagclass>presentation.web.tld.WriteAssetTag</tagclass>
+		<bodycontent>empty</bodycontent>
+		<description> </description>
+		<attribute>
+			<name>asset</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>miniatura</name>
+		<tagclass>presentation.web.tld.Miniaturas.MiniaturasTag</tagclass>
+		<bodycontent>empty</bodycontent>
+		<description> </description>
+		<attribute>
+			<name>id</name>
+			<required>true</required>
+		</attribute>
+		<attribute>
+			<name>type</name>
+			<required>true</required>
+		</attribute>
+		<attribute>
+			<name>elements</name>
+			<required>true</required>
+		</attribute>
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+		</attribute>
+		<attribute>
+			<name>height</name>
+			<required>false</required>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>tags</name>
+		<tagclass>presentation.web.tld.TagsTag</tagclass>
+		<bodycontent>empty</bodycontent>
+		<description> </description>
+		<attribute>
+			<name>asset</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>links</name>
+		<tagclass>presentation.web.tld.LinksTag</tagclass>
+		<bodycontent>empty</bodycontent>
+		<description> </description>
+		<attribute>
+			<name>asset</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>nube</name>
+		<tagclass>presentation.web.tld.TagsNubeTag</tagclass>
+		<bodycontent>empty</bodycontent>
+		<description>Genera la nube de tags para el usuario actual</description>
+		<attribute>
+			<name>elements</name>
+			<required>true</required>
+		</attribute>
+		<attribute>
+			<name>style</name>
+			<required>false</required>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>operaciones</name>
+		<tagclass>presentation.web.tld.OperacionesTag</tagclass>
+		<bodycontent>empty</bodycontent>
+		<description> </description>
+		<attribute>
+			<name>elements</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>

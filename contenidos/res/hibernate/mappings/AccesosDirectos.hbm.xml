@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 23-abr-2009 23:45:15 by Hibernate Tools 3.2.4.GA -->
+<hibernate-mapping>
+    <class name="business.beans.AccesosDirectos" table="accesos_directos" catalog="contenidos">
+        <id name="accDirPk" type="java.lang.Long">
+            <column name="acc_dir_pk" />
+            <generator class="identity" />
+        </id>
+        <property name="assFk" type="long">
+            <column name="ass_fk" not-null="true" />
+        </property>
+        <property name="carFk" type="long">
+            <column name="car_fk" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

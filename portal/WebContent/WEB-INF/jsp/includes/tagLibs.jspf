@@ -1,0 +1,2 @@
+<%-- Tags comunes  --%>
+<%@ include file="/common/includes/tagLibs.jspf"%>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rss version="2.0">
+	<channel>
+		<title>
+			Avisos en FileBook
+		</title>
+		<link>
+			https://filebook.dnsalias.net:8443/portal
+		</link>
+		<description>
+			Rss de seguimiento de avisos personales en FileBook
+		</description>
+	</channel>
+</rss>

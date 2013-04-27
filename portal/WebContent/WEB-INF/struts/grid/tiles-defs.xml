@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+                                   "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+<tiles-definitions>
+ <!-- Definición de layouts -->
+	<definition name="layouts.defaultLayout" path="/WEB-INF/jsp/common/layouts/default.jsp">
+		<put name="title" value="title.empty"/>
+		<put name="encabezado" value="/WEB-INF/jsp/common/header.jsp"/>
+		<put name="menu" value="/WEB-INF/jsp/common/menu.jsp"/>
+		<put name="principal" value="/WEB-INF/jsp/common/empty.jsp"/>
+		<put name="footer" value="/WEB-INF/jsp/common/footer.jsp"/>
+	</definition>
+	<definition name="layouts.single" path="/WEB-INF/jsp/common/layouts/single.jsp">
+		<put name="principal" value="/WEB-INF/jsp/common/empty.jsp" />
+	</definition>
+ 
+	<!-- Definición de páginas -->
+	<definition name="page.infoweb" path="/WEB-INF/jsp/common/infoweb.jsp"/>
+	
+	<definition extends="layouts.defaultLayout" name="page.grid">
+	 <put name="principal" value="/WEB-INF/jsp/common/repaintGrid.jsp"/>
+	</definition>
+
+	<definition extends="layouts.single" name="page.underconstruction">
+		<put name="principal" value="/WEB-INF/jsp/common/underconstruction.jsp"/>
+	</definition>
+	
+	<definition extends="layouts.single" name="page.error">
+		<put name="principal" value="/WEB-INF/jsp/common/error.jsp"/>
+	</definition>
+	<definition extends="layouts.defaultLayout" name="page.errorpage">
+		<put name="principal" value="/WEB-INF/jsp/common/errorpage.jsp"/>
+	</definition>
+</tiles-definitions>

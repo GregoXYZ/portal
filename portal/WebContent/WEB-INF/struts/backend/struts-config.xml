@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+                               "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+ <data-sources/>
+ <form-beans>
+  <form-bean name="SessionForm" type="presentation.web.forms.SessionForm"/>
+  <form-bean name="UserForm" type="presentation.web.forms.UserForm"/>
+  <form-bean name="GroupForm" type="presentation.web.forms.GroupForm"/>
+  <form-bean name="MenuForm" type="presentation.web.forms.MenuForm"/>
+  <form-bean name="UrlForm" type="presentation.web.forms.UrlForm"/>
+  <form-bean name="ZonaForm" type="presentation.web.forms.ZonaForm"/>
+  <form-bean name="BugForm" type="presentation.web.forms.BugForm"/>
+ </form-beans>
+ <global-exceptions>
+  <exception handler="common.presentation.security.ExceptionHandler"
+   key="lang.exception" type="java.lang.Exception"/>
+ </global-exceptions>
+ <global-forwards>
+		<!-- 
+		<forward contextRelative="true" name="errorNoControlado" path="/error.do"/>
+		<forward contextRelative="true" name="webError" path="/error.do"/>
+		 -->
+		<forward contextRelative="true" name="noLoginException" path="/home.do"/>
+		<forward contextRelative="true" name="noBrowser" path="/nobrowser.do"/>
+		<forward contextRelative="true" name="errorNoControlado" path="/errorpage.do"/>
+ </global-forwards>
+ <action-mappings>
+		<action forward="page.empty" path="/empty"/>
+		<action forward="page.nobrowser" path="/nobrowser"/>
+		<action forward="page.underconstruction" path="/underconstruction"/>
+		<action forward="page.infoweb" path="/infoweb"/>
+
+		<action
+			className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+			path="/error" scope="request"
+			type="common.presentation.web.actions.ErrorAction" validate="false">
+			<set-property property="applicationZone" value="portal" />
+			<forward name="success" path="page.error" />
+		</action>
+		<action
+			className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+			path="/errorpage" scope="request"
+			type="common.presentation.web.actions.ErrorAction" validate="false">
+			<set-property property="applicationZone" value="portal" />
+			<forward name="success" path="page.errorpage" />
+		</action>
+		<action
+			className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+			path="/back" scope="request"
+			type="common.presentation.web.actions.BackAction" validate="false">
+			<set-property property="applicationZone" value="portal"/>
+		</action>
+
+
+
+   
+  <!-- LISTADOS -->
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="UserForm" path="/userlist" scope="request"
+   type="presentation.web.actions.backend.UserListAction" validate="false">
+   <set-property property="applicationZone" value="portal"/>
+   <set-property property="applicationUrl" value="adminuser"/>
+   <forward name="success" path="page.backenduserlist"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="UserForm" path="/singleuserlist" scope="request"
+   type="presentation.web.actions.backend.UserListAction" validate="false">
+   <set-property property="applicationZone" value="portal"/>
+   <set-property property="applicationUrl" value="adminuser"/>
+   <forward name="success" path="page.singleuserlist"/>
+  </action>
+
+
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="GroupForm" path="/grouplist" scope="request"
+   type="presentation.web.actions.backend.GroupListAction" validate="false">
+   <set-property property="applicationZone" value="portal"/>
+   <set-property property="applicationUrl" value="admingroup"/>
+   <forward name="success" path="page.backendgrouplist"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="MenuForm" path="/menulist" scope="request"
+   type="presentation.web.actions.backend.MenuListAction" validate="false">
+   <set-property property="applicationZone" value="portal"/>
+   <set-property property="applicationUrl" value="adminmenu"/>
+   <forward name="success" path="page.backendmenulist"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="UrlForm" path="/urllist" scope="request"
+   type="presentation.web.actions.backend.UrlListAction" validate="false">
+   <set-property property="applicationZone" value="portal"/>
+   <set-property property="applicationUrl" value="adminurl"/>
+   <forward name="success" path="page.backendurllist"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="ZonaForm" path="/zonalist" scope="request"
+   type="presentation.web.actions.backend.ZonaListAction" validate="false">
+   <set-property property="applicationZone" value="portal"/>
+   <set-property property="applicationUrl" value="adminzona"/>
+   <forward name="success" path="page.backendzonalist"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="BugForm" path="/buglist" scope="request"
+   type="presentation.web.actions.backend.BugListAction" validate="false">
+   <set-property property="applicationZone" value="portal"/>
+   <set-property property="applicationUrl" value="adminbugs"/>
+   <forward name="success" path="page.backendbuglist"/>
+  </action>
+  
+  <!-- DELETES -->
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="UserForm" path="/deleteuser" scope="request"
+   type="presentation.web.actions.backend.DeleteUserAction" validate="false">
+   <set-property property="applicationZone" value="portal"/>
+   <set-property property="applicationUrl" value="adminuser"/>
+   <forward name="success" path="/userlist.do"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="GroupForm" path="/deletegroup" scope="request"
+   type="presentation.web.actions.backend.DeleteGroupAction" validate="false">
+   <set-property property="applicationZone" value="portal"/>
+   <set-property property="applicationUrl" value="admingroup"/>
+   <forward name="success" path="/grouplist.do"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="MenuForm" path="/deletemenu" scope="request"
+   type="presentation.web.actions.backend.DeleteMenuAction" validate="false">
+   <set-property property="applicationZone" value="portal"/>
+   <set-property property="applicationUrl" value="adminmenu"/>
+   <forward name="success" path="/menulist.do"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="ZonaForm" path="/deletezona" scope="request"
+   type="presentation.web.actions.backend.DeleteZonaAction" validate="false">
+   <set-property property="applicationZone" value="portal"/>
+   <set-property property="applicationUrl" value="adminzona"/>
+   <forward name="success" path="/zonalist.do"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="UrlForm" path="/deleteurl" scope="request"
+   type="presentation.web.actions.backend.DeleteUrlAction" validate="false">
+   <set-property property="applicationZone" value="portal"/>
+   <set-property property="applicationUrl" value="adminurl"/>
+   <forward name="success" path="/urllist.do"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="BugForm" path="/deletebug" scope="request"
+   type="presentation.web.actions.backend.DeleteBugAction" validate="false">
+   <set-property property="applicationZone" value="portal"/>
+   <set-property property="applicationUrl" value="adminbugs"/>
+   <forward name="success" path="/buglist.do"/>
+  </action>
+
+  <!-- UPDATES/NEWS -->
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="UserForm" path="/edituser" scope="request"
+   type="presentation.web.actions.backend.EditUserAction" validate="false">
+   <set-property property="applicationZone" value="portal"/>
+   <set-property property="applicationUrl" value="adminuser"/>
+   <forward name="success" path="page.edituser"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="UserForm" path="/saveuser" scope="request"
+   type="presentation.web.actions.backend.SaveUserAction" validate="false">
+   <set-property property="applicationZone" value="portal"/>
+   <set-property property="applicationUrl" value="adminuser"/>
+   <forward name="success" path="/userlist.do"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="GroupForm" path="/editgroup" scope="request"
+   type="presentation.web.actions.backend.EditGroupAction" validate="false">
+   <set-property property="applicationZone" value="portal"/>
+   <set-property property="applicationUrl" value="admingroup"/>
+   <forward name="success" path="page.editgroup"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="GroupForm" path="/savegroup" scope="request"
+   type="presentation.web.actions.backend.SaveGroupAction" validate="false">
+   <set-property property="applicationZone" value="portal"/>
+   <set-property property="applicationUrl" value="admingroup"/>
+   <forward name="success" path="/grouplist.do"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="MenuForm" path="/editmenu" scope="request"
+   type="presentation.web.actions.backend.EditMenuAction" validate="false">
+   <set-property property="applicationZone" value="portal"/>
+   <set-property property="applicationUrl" value="adminmenu"/>
+   <forward name="success" path="page.editmenu"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="MenuForm" path="/savemenu" scope="request"
+   type="presentation.web.actions.backend.SaveMenuAction" validate="false">
+   <set-property property="applicationZone" value="portal"/>
+   <set-property property="applicationUrl" value="adminmenu"/>
+   <forward name="success" path="/menulist.do"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="ZonaForm" path="/editzona" scope="request"
+   type="presentation.web.actions.backend.EditZonaAction" validate="false">
+   <set-property property="applicationZone" value="portal"/>
+   <set-property property="applicationUrl" value="adminzona"/>
+   <forward name="success" path="page.editzona"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="ZonaForm" path="/savezona" scope="request"
+   type="presentation.web.actions.backend.SaveZonaAction" validate="false">
+   <set-property property="applicationZone" value="portal"/>
+   <set-property property="applicationUrl" value="adminzona"/>
+   <forward name="success" path="/zonalist.do"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="UrlForm" path="/editurl" scope="request"
+   type="presentation.web.actions.backend.EditUrlAction" validate="false">
+   <set-property property="applicationZone" value="portal"/>
+   <set-property property="applicationUrl" value="adminurl"/>
+   <forward name="success" path="page.editurl"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="UrlForm" path="/saveurl" scope="request"
+   type="presentation.web.actions.backend.SaveUrlAction" validate="false">
+   <set-property property="applicationZone" value="portal"/>
+   <set-property property="applicationUrl" value="adminurl"/>
+   <forward name="success" path="/urllist.do"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="BugForm" path="/editbug" scope="request"
+   type="presentation.web.actions.backend.EditBugAction" validate="false">
+   <set-property property="applicationZone" value="portal"/>
+   <set-property property="applicationUrl" value="adminbugs"/>
+   <forward name="success" path="page.editbug"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="BugForm" path="/savebug" scope="request"
+   type="presentation.web.actions.backend.SaveBugAction" validate="false">
+   <set-property property="applicationZone" value="portal"/>
+   <set-property property="applicationUrl" value="adminbugs"/>
+   <forward name="success" path="/buglist.do"/>
+  </action>
+  
+ </action-mappings>
+ <controller/>
+ <message-resources null="false" parameter="i18n.MessageResources"/>
+ <plug-in className="org.apache.struts.tiles.TilesPlugin">
+  <set-property property="definitions-config" value="/WEB-INF/struts/backend/tiles-defs.xml"/>
+  <set-property property="moduleAware" value="true"/>
+ </plug-in>
+ <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+  <set-property property="pathnames" value="/WEB-INF/struts//backend/validator-rules.xml,/WEB-INF/struts/backend/validation.xml"/>
+ </plug-in>
+</struts-config>

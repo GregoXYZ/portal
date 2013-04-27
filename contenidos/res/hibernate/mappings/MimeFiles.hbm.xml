@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 02-ene-2009 19:01:48 by Hibernate Tools 3.2.4.CR1 -->
+<hibernate-mapping>
+    <class name="business.beans.MimeFiles" table="mime_files" catalog="contenidos">
+        <id name="mimFilPk" type="java.lang.Long">
+            <column name="mim_fil_pk" />
+            <generator class="identity" />
+        </id>
+        <property name="mimFilExtension" type="string">
+            <column name="mim_fil_extension" length="10" not-null="true" />
+        </property>
+        <property name="mimFilMime" type="string">
+            <column name="mim_fil_mime" length="20" not-null="true" />
+        </property>
+        <property name="mimFilIcon" type="string">
+            <column name="mim_fil_icon" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>

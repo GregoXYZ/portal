@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-may-2009 22:46:18 by Hibernate Tools 3.2.4.GA -->
+<hibernate-mapping>
+    <class name="business.beans.Entradas" table="entradas" catalog="foros">
+        <id name="entPk" type="java.lang.Long">
+            <column name="ent_pk" />
+            <generator class="identity" />
+        </id>
+        <property name="entFechaAlta" type="java.lang.Long">
+            <column name="ent_fecha_alta" not-null="true" />
+        </property>
+        <property name="entSubject" type="string">
+            <column name="ent_subject" length="250" not-null="true" />
+        </property>
+        <property name="usuFk" type="java.lang.Long">
+            <column name="usu_fk" not-null="true" />
+        </property>
+        <property name="entRestringida" type="boolean">
+            <column name="ent_restringida" not-null="true" />
+        </property>
+        <set name="destinoses" inverse="true" lazy="true" table="destinos" fetch="select">
+            <key>
+                <column name="ent_fk" not-null="true" />
+            </key>
+            <one-to-many class="business.beans.Destinos" />
+        </set>
+    </class>
+</hibernate-mapping>

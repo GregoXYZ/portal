@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grid 	name="gridBackEndUsers" 
+		style="tablesorter marco" 
+		title="Lista de usuarios"
+		showAlertNoData="false" 
+		editable="false">
+
+	<bundle>i18n.grid</bundle>
+
+	<select-key>usuPk</select-key>
+
+	<column id="Nombre">
+		<header>Nombre</header>
+		<reference>usuNombre</reference>
+	</column>
+	<column id="Apellido1">
+		<header>Primer Apellido</header>
+		<reference>usuApellido1</reference>
+	</column>
+	<column id="Apellido2">
+		<header>Segundo Apellido</header>
+		<reference>usuApellido2</reference>
+	</column>
+	<column id="UkUsuario">
+		<header>User</header>
+		<reference>usuUkUsuario</reference>
+	</column>
+
+	<actions>
+		<row-action name="editUser" 
+					image="/portal/images/edit.png" >
+			<text>Edita</text>
+			<title>Edita usuario</title>
+			<style>action</style>
+			<onClick>onClick</onClick>
+		</row-action>
+		<row-action name="deleteUser" 
+					image="/portal/images/delete.png" 
+					message="Va eliminar el usuario.\n¿Desea continuar?" 
+					confirm="true">
+			<text>Borrar</text>
+			<title>Borrar usuario</title>
+			<style>action</style>
+			<param>usuPk</param>
+			<formname>deleteUser</formname>
+		</row-action>
+		<global-action name="newUser" 
+					   image="/portal/images/add.png" >
+			<text>Nuevo</text>
+			<title>Nuenvo usuario</title>
+			<onClick>javascript:ajaxPopup("/portal/backend/edituser.do")</onClick>
+		</global-action>
+		<global-action name="refresh" 
+					   image="/portal/images/refresh.png" >
+			<text>Actualizar</text>
+			<title>Actualiza datos</title>
+			<onClick>javascript:cargaDiv("pagina", "/portal/backend/singleuserlist.do", null, pensandoAjax)</onClick>
+		</global-action>
+	</actions>
+</grid>

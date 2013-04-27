@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grid 	name="gridBackEndGroups" 
+		style="tablesorter marco" 
+		title="Perfiles disponibles"
+		showAlertNoData="false" 
+		editable="false">
+
+	<bundle>i18n.grid</bundle>
+
+	<select-key>gruPk</select-key>
+
+	<column id="Codigo">
+		<header>Código</header>
+		<reference>gruUkCodigo</reference>
+	</column>
+	<column id="Descripcion">
+		<header>Descripción</header>
+		<reference>gruDescripcion</reference>
+	</column>
+
+	<actions>
+		<row-action name="editGroup" 
+					image="/portal/images/edit.png" >
+			<text>Edita</text>
+			<title>Edita grupo</title>
+			<style>action</style>
+			<onClick>onClick</onClick>
+		</row-action>
+		<row-action name="deleteGroup" 
+					image="/portal/images/delete.png" 
+					message="Va eliminar el grupo.\n¿Desea continuar?" 
+					confirm="true">
+			<text>Borrar</text>
+			<title>Borrar grupo</title>
+			<style>action</style>
+			<param>gruPk</param>
+			<formname>deleteGroup</formname>
+		</row-action>
+		<global-action name="newGroup" 
+					   image="/portal/images/add.png" >
+			<text>Nuevo</text>
+			<title>Nuenvo grupo</title>
+			<onClick>javascript:ajaxPopup("/portal/backend/editgroup.do")</onClick>
+		</global-action>
+	</actions>
+</grid>

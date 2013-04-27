@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<!-- Recursos comunes -->
+	<import resource="common/beans.xml" />
+
+	<!-- Business objects -->
+	<bean id="AssetsBO" class="business.bo.impl.AssetsBOImpl">
+	</bean>
+	<bean id="CarpetasBO" class="business.bo.impl.CarpetasBOImpl">
+	</bean>
+	<bean id="FicherosBO" class="business.bo.impl.FicherosBOImpl">
+	</bean>
+	<bean id="LinksBO" class="business.bo.impl.LinksBOImpl">
+	</bean>
+	<bean id="TiposAssetsBO" class="business.bo.impl.TiposAssetsBOImpl">
+	</bean>
+	<bean id="CuotasBO" class="business.bo.impl.CuotasBOImpl">
+	</bean>
+	<bean id="MimeFilesBO" class="business.bo.impl.MimeFilesBOImpl">
+	</bean>
+	<bean id="CompartidosBO" class="business.bo.impl.CompartidosBOImpl">
+	</bean>
+	<bean id="TagsBO" class="business.bo.impl.TagsBOImpl">
+	</bean>
+	<bean id="ExtraQueriesBO" class="business.bo.impl.ExtraQueriesBOImpl">
+	</bean>
+	<bean id="BusquedasPersonalesBO" class="business.bo.impl.BusquedasPersonalesBOImpl">
+	</bean>
+	<bean id="ParametrosBO" class="business.bo.impl.ParametrosBOImpl">
+	</bean>
+</beans>

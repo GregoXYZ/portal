@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 22-dic-2008 21:10:17 by Hibernate Tools 3.2.4.CR1 -->
+<hibernate-mapping>
+    <class name="common.business.beans.GruposMenus" table="grupos_menus" catalog="system">
+        <composite-id name="id" class="common.business.beans.GruposMenusId">
+            <key-property name="gruFk" type="java.lang.Long">
+                <column name="gru_fk" />
+            </key-property>
+            <key-property name="menFk" type="java.lang.Long">
+                <column name="men_fk" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

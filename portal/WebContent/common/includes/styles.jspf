@@ -1,0 +1,6 @@
+<!-- Recursos estáticos -->
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/common/css/style.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/common/css/menu.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/common/css/tables.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/common/css/jquery.wm.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/common/css/jquery-ui/jquery-ui.css"/>

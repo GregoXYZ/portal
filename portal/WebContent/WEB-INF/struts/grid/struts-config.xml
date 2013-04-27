@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+                               "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+ <data-sources/>
+ <form-beans>
+  <form-bean name="GridEventForm" type="org.apache.struts.validator.DynaValidatorForm">
+   <form-property name="eventId" type="java.lang.String"/>
+   <form-property name="eventValue" type="java.lang.String"/>
+   <form-property name="gridId" type="java.lang.String"/>
+  </form-bean>
+ </form-beans>
+ <global-exceptions>
+  <exception handler="common.presentation.security.ExceptionHandler"
+   key="lang.exception" type="java.lang.Exception"/>
+ </global-exceptions>
+ <global-forwards>
+		<!-- 
+		<forward contextRelative="true" name="webError" path="/error.do"/>
+		 -->
+		<forward contextRelative="true" name="noLoginException" path="/home.do"/>
+		<forward contextRelative="true" name="noBrowser" path="/nobrowser.do"/>
+		<forward contextRelative="true" name="errorNoControlado" path="/errorpage.do"/>
+ </global-forwards>
+ <action-mappings>
+		<action forward="page.empty" path="/empty"/>
+		<action forward="page.nobrowser" path="/nobrowser"/>
+		<action forward="page.underconstruction" path="/underconstruction"/>
+		<action forward="page.infoweb" path="/infoweb"/>
+
+		<action
+			className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+			path="/error" scope="request"
+			type="common.presentation.web.actions.ErrorAction" validate="false">
+			<set-property property="applicationZone" value="portal" />
+			<forward name="success" path="page.error" />
+		</action>
+		<action
+			className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+			path="/errorpage" scope="request"
+			type="common.presentation.web.actions.ErrorAction" validate="false">
+			<set-property property="applicationZone" value="portal" />
+			<forward name="success" path="page.errorpage" />
+		</action>
+		<action
+			className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+			path="/back" scope="request"
+			type="common.presentation.web.actions.BackAction" validate="false">
+			<set-property property="applicationZone" value="portal"/>
+		</action>
+	  
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="GridEventForm" path="/gridAction" scope="request"
+   type="presentation.web.grid.actions.GridAction" validate="false">
+   <set-property property="applicationZone" value=""/>
+   <set-property property="applicationUrl" value=""/>
+   <forward name="success" path="/WEB-INF/jsp/common/repaintGrid.jsp"/>
+  </action>
+ </action-mappings>
+ <controller/>
+ <message-resources null="false" parameter="i18n.MessageResources"/>
+ <plug-in className="org.apache.struts.tiles.TilesPlugin">
+  <set-property property="definitions-config" value="/WEB-INF/struts/grid/tiles-defs.xml"/>
+  <set-property property="moduleAware" value="true"/>
+ </plug-in>
+</struts-config>

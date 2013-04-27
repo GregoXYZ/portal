@@ -1,0 +1,291 @@
+@CHARSET "UTF-8";
+
+#main {
+	clear: both;
+	height: 100%;
+}
+
+#window {
+	background: #EAF2EE none repeat scroll 0 0;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+/*
+#window div {
+	font-family: Arial, Helvetica, "Luxi Sans", sans-serif;
+}
+*/
+
+#resultscol {
+	/*border-right: 1px solid #BCCCBA;*/
+	float: left;
+	height: 100%;
+	position: relative !important;
+	width: 30%;
+}
+
+#resultscol div.container {
+	padding: 0px 1px 0px 0px;
+}
+
+#results {
+	width: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+#results div.label {
+	padding-left: 0;
+}
+
+#results div.values {
+	background-color: white;
+	border: 1px solid #CCCCCC;
+	clear: both;
+	overflow: auto;
+	padding: 5px;
+	margin: 2px;
+}
+
+#results div.highlighted {
+	background-color: #DFDFDF;
+}
+
+#results div.result {
+	background-color: #F7F7F7;
+	border: 1px solid #EBEBEB;
+	cursor: pointer;
+	margin-bottom: 5px;
+	padding: 2px 0 2px 4px;
+}
+
+#results div.result a {
+	cursor: pointer;
+	font-size: 0.9em;
+	text-decoration: underline;
+}
+
+#window a:link {
+	/*color: #000099;*/
+}
+
+#results div.result:hover {
+	background-color: #EBEBEB;
+}
+
+#results div.result div.blurb {
+	font-size: 0.8em;
+}
+
+#results div.result div.meta {
+	color: #017416;
+	font-size: 0.8em;
+}
+
+#results div.label img.loading {
+	float: right;
+	padding-top: 5px;
+	visibility: hidden;
+}
+
+#window img.link {
+	float: right;
+	padding-right: 2px;
+}
+
+#messagecol {
+	float: left;
+	position: relative !important;
+	width: 70%;
+	height: 100%;
+	/*overflow-x: hidden;
+	overflow-y: auto;*/
+}
+
+#messagecol div.container div.sep {
+	border-top: 1px solid #BCCCBA;
+	width: 100%;
+	height: 0;
+}
+
+#message {
+	margin:  0 5px 0 0;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+#message .avatar {
+	width: 50px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+#message .avatar img {
+	max-height: 50px;
+	max-width: 50px;
+}
+
+#thread {
+	margin:  0 5px 2px 0;
+}
+
+#thread tr.currentmessage {
+	background-color: #DFDFDF;
+}
+
+#thread tr.othermessage:hover {
+	cursor:	pointer;
+	background-color: #DFDFDF;
+}
+
+#thread table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	font-size: 0.85em;
+	margin-bottom: 0.25em;
+	width: 100%;
+}
+
+#thread th {
+	font-size: 0.95em;
+	text-align: left;
+}
+
+#thread tr.threadmessage td {
+	font-size: 0.95em;
+	padding: 2px;
+}
+
+#thread div.values,
+#message div.values {
+	padding: 5px 3px 5px 5px;
+}
+
+#thread div.values {
+	background-color: white;
+	border: 1px solid #CCCCCC;
+	max-height: 125px;
+	overflow: auto;
+}
+
+#thread div.label img, 
+#message div.label img {
+	float:right;
+	visibility:hidden;
+}
+
+#message div.values {
+	background-color: white;
+	border: 1px solid #CCCCCC;
+	font-size: 0.9em;
+	margin: 2px 0;
+	/*width: 100%;*/
+}
+
+#message .messagebody {
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+#window div.label {
+	color: #414141;
+	cursor: default;
+	font-size: 0.85em;
+	padding: 2px;
+}
+
+#window div.pws {
+	white-space: pre;
+}
+
+#headers {
+	width: 100%;
+	background-color: #F5F5F5;
+	border: 1px solid #AAAAAA;
+	color: black;
+	margin-bottom: 5px;
+	padding: 5px;
+}
+
+#headers span.actions {
+	margin-left: 5px;
+}
+
+.mklink {
+	color: #000099;
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+#headers td.actions {
+	text-align: right;
+}
+
+#headers th {
+	width: 45px;
+	padding-right: 5px;
+	text-align: right; 
+}
+
+#headers td,
+#headers th {
+	font-size: 0.85em;
+}
+
+#rmenu {
+	background-color: #C0ACFF;
+	padding: 0;
+	-moz-border-radius-topright: 3px;
+	-webkit-border-top-right-radius: 3px; 
+}
+
+#lmenu {
+	background-color: #C0ACFF;
+	padding: 0;
+	-moz-border-radius-topleft: 3px;
+	-webkit-border-top-left-radius: 3px; 
+}
+
+#rmenu span{
+	float: right;
+}
+
+span.opmenu {
+	height: 100%;
+	vertical-align: middle;
+}
+
+.opmenu a {
+	font-size: 0.85em;
+	text-decoration: none;
+	margin: 0 2px;
+}
+
+.opmenu a:link,
+.opmenu a:active,
+.opmenu a:visited
+{
+	/*display: block;*/
+	padding: 0px 5px;
+	/*color: #000;*/
+	text-decoration: none;
+}
+
+.opmenu a:hover {
+	background-color: #000;
+	color: #fff;
+	opacity: 0.7;
+}
+
+.tabs {
+	height: 26px;
+}
+
+.listusers {
+	width:300px;
+}

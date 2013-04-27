@@ -1,0 +1,178 @@
+@CHARSET "UTF-8";
+
+/* tables */
+
+.tablearea {
+	width: 100%;
+	text-align: left;
+	margin:  0 auto 0 auto;
+}
+
+.tablearea a {
+	text-decoration: none;
+}
+
+.tablearea a:hover {
+	text-decoration: underline;
+}
+
+.tablearea table.tablesorter {
+	font-family: arial;
+	text-align: left;
+	background-color: #CDCDCD;
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.tablearea table.tablesorter thead tr .header {
+	background-image: url(/portal/images/tables/bg.gif);
+	background-position:right center;
+	background-repeat:no-repeat;
+	cursor: pointer;
+	color: #000;
+	padding-right:15px;
+}
+
+.tablearea tbody td {
+	padding-left: 5px;
+}
+
+.tablearea th:last-child {
+	text-align: center;
+}
+
+.tablearea th:hover>a {
+	text-decoration: underline;
+}
+
+.tablearea tbody>tr:hover {
+	background-color: #A9A9A9;
+	outline-color: threedlightshadow;
+	outline-style: solid;
+	outline-width: 1px;
+	/*-moz-border-radius: 0.3em;
+	-webkit-border-radius: 0.3em;*/
+}
+
+.tablearea td:not (:first-child ) {
+	width: 0;
+}
+
+.tablearea td.rowactions {
+	width: 0;
+	text-align: right;
+	/*padding-right: 10px;*/
+}
+
+.tablearea table.tablesorter thead tr th,
+.tablearea table.tablesorter thead tr td {
+	background-color:#E6EEEE;
+	/*border:1px solid #FFFFFF;*/
+	font-size:8pt;
+	padding:4px;
+	/*border-bottom: 1px solid #FFF;*/
+}
+
+.tablearea table.tablesorter tfoot tr th,
+.tablearea table.tablesorter tfoot tr td {
+	border-top: 1px solid #FFF;
+}
+
+.tablearea table.tablesorter thead tr .headerSortDown,
+.tablearea table.tablesorter thead tr .headerSortUp {
+	background-color: #8dbdd8;
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+
+.tablearea table.tablesorter thead tr .headerSortUp {
+	background-image: url(/portal/images/tables/asc.gif);
+}
+
+.tablearea table.tablesorter thead tr .headerSortDown {
+	background-image: url(/portal/images/tables/desc.gif);
+}
+
+.tablearea table.tablesorter div.actions {
+	display: inline-block;
+	/*float: right;
+	position: relative;*/
+}
+
+.tablearea .title
+{
+	position: relative;
+	display: inline-block;
+	width: 100%;
+}
+
+.tablearea .tablecab {
+	float: left;
+}
+
+.globalactions {
+	float: right;
+	display: block;
+}
+
+
+.globalactions .menu {
+	padding: 1px 2px;
+}
+
+.globalactions .menu:hover {
+	background-color: #000;
+	color: #fff;
+	opacity: 0.7;
+}
+
+.tablearea table.tablesorter div.actions img,
+.tablearea .globalactions img  
+{
+	padding-top: 4px;
+	border: 0px;
+	cursor: pointer;
+}
+
+/*
+.rowactions {
+	position: relative;
+	width: 60px;
+}
+*/
+
+.pager {
+	text-align: center;
+}
+
+div.tablesorterPager {
+	padding: 10px 0 10px 0;
+	text-align: center;
+	vertical-align: top;
+}
+
+div.tablesorterPager span {
+	padding: 0 5px 0 5px;
+}
+
+div.tablesorterPager input.prev {
+	width: auto;
+	margin-right: 10px;
+}
+
+div.tablesorterPager input.next {
+	width: auto;
+	margin-left: 10px;
+}
+
+div.tablesorterPager input {
+	font-size: 0.8em;
+	width: 50px;
+	text-align: center;
+}
+
+div.tablesorterPager img {
+	vertical-align: middle;
+}

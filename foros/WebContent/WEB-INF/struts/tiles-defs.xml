@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+                                   "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+<tiles-definitions>
+ <!-- Definición de layouts -->
+	<definition name="layouts.defaultLayout" path="/WEB-INF/jsp/common/layouts/default.jsp">
+		<put name="title" value="title.empty"/>
+		<put name="encabezado" value="/WEB-INF/jsp/common/header.jsp"/>
+		<put name="menu" value="/WEB-INF/jsp/common/menu.jsp"/>
+		<put name="principal" value="/WEB-INF/jsp/common/empty.jsp"/>
+		<put name="footer" value="/WEB-INF/jsp/common/footer.jsp"/>
+	</definition>
+	<definition name="layouts.single" path="/WEB-INF/jsp/common/layouts/single.jsp">
+		<put name="principal" value="/WEB-INF/jsp/common/empty.jsp" />
+	</definition>
+	   
+ <!-- Definición de páginas -->
+	<definition name="page.empty" path="/WEB-INF/jsp/common/empty.jsp"/>
+	<definition name="page.nobrowser" path="/WEB-INF/jsp/common/nobrowser.jsp"/>
+	<definition name="page.infoweb" path="/WEB-INF/jsp/common/infoweb.jsp"/>
+
+	<definition extends="layouts.defaultLayout" name="page.home">
+		<put name="title" value="home.title" />
+		<put name="principal" value="/WEB-INF/jsp/home.jsp" />
+	</definition>
+	<definition extends="layouts.single" name="page.results">
+		<put name="principal" value="/WEB-INF/jsp/results.jsp" />
+	</definition>
+	<definition extends="layouts.single" name="page.threads">
+		<put name="principal" value="/WEB-INF/jsp/threads.jsp" />
+	</definition>
+	<definition extends="layouts.single" name="page.contenido">
+		<put name="principal" value="/WEB-INF/jsp/message.jsp" />
+	</definition>
+
+	<definition extends="layouts.defaultLayout" name="page.foro">
+		<put name="title" value="home.title" />
+		<put name="principal" value="/WEB-INF/jsp/foro.jsp" />
+	</definition>
+	<definition extends="layouts.single" name="page.entradas">
+		<put name="principal" value="/WEB-INF/jsp/entradas.jsp" />
+	</definition>
+	<definition extends="layouts.single" name="page.contenidos">
+		<put name="principal" value="/WEB-INF/jsp/contenidos.jsp" />
+	</definition>
+
+	<definition extends="layouts.single" name="page.newlist">
+		<put name="principal" value="/WEB-INF/jsp/newlist.jsp" />
+	</definition>
+
+	<definition extends="layouts.single" name="page.invitaciones">
+		<put name="principal" value="/WEB-INF/jsp/invitaciones.jsp" />
+	</definition>
+		
+	<definition extends="layouts.single" name="page.newmessage">
+		<put name="principal" value="/WEB-INF/jsp/newmessage.jsp" />
+	</definition>
+
+	<definition extends="layouts.single" name="page.error">
+		<put name="principal" value="/WEB-INF/jsp/common/error.jsp"/>
+	</definition>
+	<definition extends="layouts.defaultLayout" name="page.errorpage">
+		<put name="principal" value="/WEB-INF/jsp/common/errorpage.jsp"/>
+	</definition>
+</tiles-definitions>

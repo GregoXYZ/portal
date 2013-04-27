@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-may-2009 22:46:18 by Hibernate Tools 3.2.4.GA -->
+<hibernate-mapping>
+    <class name="business.beans.Destinos" table="destinos" catalog="foros">
+        <composite-id name="id" class="business.beans.DestinosId">
+            <key-property name="entFk" type="java.lang.Long">
+                <column name="ent_fk" />
+            </key-property>
+            <key-property name="usuFk" type="java.lang.Long">
+                <column name="usu_fk" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="entradas" class="business.beans.Entradas" update="false" insert="false" fetch="select">
+            <column name="ent_fk" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

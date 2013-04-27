@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 19-mar-2009 23:38:43 by Hibernate Tools 3.2.4.GA -->
+<hibernate-mapping>
+    <class name="business.beans.Links" table="links" catalog="contenidos">
+        <id name="linPk" type="java.lang.Long">
+            <column name="lin_pk" />
+            <generator class="identity" />
+        </id>
+        <property name="assFk" type="long">
+            <column name="ass_fk" not-null="true" />
+        </property>
+        <property name="assFkRef" type="long">
+            <column name="ass_fk_ref" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+                               "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+ <data-sources/>
+ <form-beans>
+  <form-bean name="EmptyForm" type="common.presentation.web.forms.EmptyForm"/>
+  <form-bean name="BuscarForm" type="presentation.web.forms.BuscarForm"/>
+  <form-bean name="ContenidosForm" type="presentation.web.forms.ContenidosForm"/>
+  <form-bean name="FileForm" type="presentation.web.forms.FileForm"/>
+  <form-bean name="FolderForm" type="presentation.web.forms.FolderForm"/>
+  <form-bean name="CuotaForm" type="presentation.web.forms.backend.CuotaForm"/>
+  <form-bean name="MimeFileForm" type="presentation.web.forms.MimeFileForm"/>
+  <form-bean name="UpdateFileForm" type="presentation.web.forms.UpdateFileForm"/>
+  <form-bean name="CompartidosForm" type="presentation.web.forms.CompartidosForm"/>
+  <form-bean name="AssetInfoForm" type="presentation.web.forms.AssetInfoForm"/>
+  <form-bean name="SelectionFilesForm" type="presentation.web.forms.SelectionFilesForm"/>
+  <form-bean name="TagForm" type="presentation.web.forms.TagForm"/>
+  <form-bean name="LinkForm" type="presentation.web.forms.LinkForm"/>
+  <form-bean name="OperacionesForm" type="presentation.web.forms.OperacionesForm"/>
+ </form-beans>
+ <global-exceptions>
+  <exception handler="common.presentation.security.ExceptionHandler"
+   key="lang.exception" type="java.lang.Exception"/>
+ </global-exceptions>
+ <global-forwards>
+		<!-- 
+		<forward contextRelative="true" name="webError" path="/error.do"/>
+		 -->
+		<forward contextRelative="true" name="noLoginException" path="/home.do"/>
+		<forward contextRelative="true" name="noBrowser" path="/nobrowser.do"/>
+		<forward contextRelative="true" name="errorNoControlado" path="/errorpage.do"/>
+ </global-forwards>
+ <action-mappings>
+		<action forward="page.empty" path="/empty"/>
+		<action forward="page.nobrowser" path="/nobrowser"/>
+		<action forward="page.underconstruction" path="/underconstruction"/>
+		<action forward="page.infoweb" path="/infoweb"/>
+
+		<action
+			className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+			path="/error" scope="request"
+			type="common.presentation.web.actions.ErrorAction" validate="false">
+			<set-property property="applicationZone" value="contenidos" />
+			<forward name="success" path="page.error" />
+		</action>
+		<action
+			className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+			path="/errorpage" scope="request"
+			type="common.presentation.web.actions.ErrorAction" validate="false">
+			<set-property property="applicationZone" value="contenidos" />
+			<forward name="success" path="page.errorpage" />
+		</action>
+		<action
+			className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+			path="/back" scope="request"
+			type="common.presentation.web.actions.BackAction" validate="false">
+			<set-property property="applicationZone" value="contenidos"/>
+		</action>
+
+  <action forward="page.procesando" path="/procesando"/>
+  
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="AssetInfoForm" path="/fileinfo" scope="request"
+   type="presentation.web.actions.AssetInfoAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <forward name="success" path="page.fileinfo"/>
+   <forward name="error" path="/empty"/>
+  </action>
+  
+  <!-- Contenidos -->
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="ContenidosForm" path="/home" scope="session"
+   type="presentation.web.actions.OpenFolderAction" validate="false">
+   <set-property property="applicationUrl" value="contenidos"/>
+   <set-property property="applicationZone" value="contenidos"/>
+   <forward name="success" path="page.home"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="ContenidosForm" path="/openfiles" scope="session"
+   type="presentation.web.actions.OpenFilesAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <set-property property="applicationUrl" value="contenidos"/>
+   <forward name="success" path="page.files"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="ContenidosForm" path="/openlinks" scope="session"
+   type="presentation.web.actions.OpenLinkssAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <set-property property="applicationUrl" value="contenidos"/>
+   <forward name="success" path="page.links"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="ContenidosForm" path="/openfolder" scope="session"
+   type="presentation.web.actions.OpenFolderAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <set-property property="applicationUrl" value="contenidos"/>
+   <forward name="success" path="page.folders"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="ContenidosForm" path="/ruta" scope="session"
+   type="presentation.web.actions.CargaPathAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <set-property property="applicationUrl" value="contenidos"/>
+   <forward name="success" path="page.ruta"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   forward="page.uploadinfo" path="/uploadinfo">
+   <set-property property="applicationZone" value="contenidos"/>
+   <set-property property="applicationUrl" value="contenidos"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="CuotaForm" path="/userinfo" scope="request"
+   type="presentation.web.actions.UserInfoAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <set-property property="applicationUrl" value="contenidos"/>
+   <forward name="success" path="page.userinfo"/>
+  </action>
+  
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="OperacionesForm" path="/assetoper" scope="session"
+   type="presentation.web.actions.AssetOperAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <forward name="success" path="page.assetoper"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="OperacionesForm" path="/addoper" scope="session"
+   type="presentation.web.actions.AddOperAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <forward name="success" path="/assetoper.do"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="OperacionesForm" path="/remomveoper" scope="session"
+   type="presentation.web.actions.RemoveOperAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <forward name="success" path="/assetoper.do"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="ContenidosForm" path="/moveoper" scope="request"
+   type="presentation.web.actions.MoveOperAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <forward name="successfile" path="/openfiles.do"/>
+   <forward name="successfolder" path="/openfolder.do"/>
+  </action>
+  
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="FileForm" path="/openfile" scope="request"
+   type="presentation.web.actions.OpenFileAction" validate="false">
+   <set-property property="applicationUrl" value="contenidos"/>
+   <set-property property="applicationZone" value="contenidos"/>
+   <forward name="error" path="/home.do"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="ContenidosForm" path="/deleteasset" scope="session"
+   type="presentation.web.actions.DeleteAssetAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <set-property property="applicationUrl" value="contenidos"/>
+   <forward name="success" path="/home.do"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   forward="page.newfolder" name="FolderForm" path="/newfolder">
+   <set-property property="applicationZone" value="contenidos"/>
+   <set-property property="applicationUrl" value="contenidos"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="FileForm" path="/newfile" scope="request"
+   type="presentation.web.actions.NewFileAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <set-property property="applicationUrl" value="contenidos"/>
+   <forward name="success" path="page.newfile"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="FileForm" path="/uploadFile" scope="request"
+   type="presentation.web.actions.CreateFileAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <set-property property="applicationUrl" value="contenidos"/>
+   <forward name="success" path="/home.do"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="FolderForm" path="/createfolder" scope="request"
+   type="presentation.web.actions.CreateFolderAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <set-property property="applicationUrl" value="contenidos"/>
+   <forward name="success" path="/home.do"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="UpdateFileForm" path="/fileproperties" scope="request"
+   type="presentation.web.actions.FilePropertiesAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <set-property property="applicationUrl" value="contenidos"/>
+   <forward name="success" path="page.updatefile"/>
+  </action>
+
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="SelectionFilesForm" path="/selectionfiles" scope="request"
+   type="presentation.web.actions.SeleccionMultipleAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <set-property property="applicationUrl" value="contenidos"/>
+   <forward name="success" path="page.selectionfiles"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="SelectionFilesForm" path="/sharefiles" scope="request"
+   type="presentation.web.actions.ShareFilesAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <set-property property="applicationUrl" value="contenidos"/>
+   <forward name="success" path="/home.do"/>
+  </action>
+
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="UpdateFileForm" path="/updatefile" scope="request"
+   type="presentation.web.actions.UpdateFileAction" validate="false">
+   <set-property property="applicationUrl" value="contenidos"/>
+   <set-property property="applicationZone" value="contenidos"/>
+   <forward name="success" path="/home.do"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="FolderForm" path="/folderproperties" scope="request"
+   type="presentation.web.actions.FolderPropertiesAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <set-property property="applicationUrl" value="contenidos"/>
+   <forward name="success" path="page.updatefolder"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="FolderForm" path="/updatefolder" scope="request"
+   type="presentation.web.actions.UpdateFolderAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <set-property property="applicationUrl" value="contenidos"/>
+   <forward name="success" path="/home.do"/>
+  </action>
+  <!-- Fin de contenidos -->
+  
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="TagForm" path="/loadtags" scope="request"
+   type="presentation.web.actions.CargaTagsAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <forward name="success" path="page.updatetags"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="TagForm" path="/deletetag" scope="request"
+   type="presentation.web.actions.DeleteTagAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <forward name="success" path="/loadtags.do"/>
+  </action>
+
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="LinkForm" path="/loadlinks" scope="request"
+   type="presentation.web.actions.CargaLinksAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <forward name="success" path="page.links"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="LinkForm" path="/adminlinks" scope="request"
+   type="presentation.web.actions.CargaLinksAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <forward name="success" path="page.adminlinks"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="LinkForm" path="/savelinks" scope="request"
+   type="presentation.web.actions.CargaLinksAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <forward name="success" path="/loadlinks.do"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="LinkForm" path="/createlink" scope="request"
+   type="presentation.web.actions.CreateLinkAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <forward name="success" path="/loadlinks.do"/>
+  </action>
+  
+  <!-- Compartidos -->
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="CompartidosForm" path="/compartidos" scope="session"
+   type="presentation.web.actions.UsersCompartenAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <set-property property="applicationUrl" value="compartidos"/>
+   <forward name="success" path="page.compartidos"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="CompartidosForm" path="/borracompartido" scope="session"
+   type="presentation.web.actions.DeleteSharedAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <set-property property="applicationUrl" value="compartidos"/>
+   <forward name="success" path="/compartidos.do"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="CompartidosForm" path="/opensharedfiles" scope="session"
+   type="presentation.web.actions.OpenFilesAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <set-property property="applicationUrl" value="compartidos"/>
+   <forward name="success" path="page.ficheroscompartidos"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="CompartidosForm" path="/opensharedfile" scope="request"
+   type="presentation.web.actions.OpenFileAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <set-property property="applicationUrl" value="compartidos"/>
+   <forward name="error" path="/compartidos.do"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="UpdateFileForm" path="/sharedfileproperties" scope="request"
+   type="presentation.web.actions.FilePropertiesAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <set-property property="applicationUrl" value="compartidos"/>
+   <forward name="success" path="page.updatesharedfile"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="UpdateFileForm" path="/updatesharedfile" scope="request"
+   type="presentation.web.actions.UpdateFileAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <set-property property="applicationUrl" value="compartidos"/>
+   <forward name="success" path="/compartidos.do"/>
+  </action>
+  <!-- Finde compartidos -->
+ 
+  <!-- MINIATURAS -->
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="ContenidosForm" path="/showMiniatures" scope="session"
+   type="presentation.web.actions.ImagesMiniaturesAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <set-property property="applicationUrl" value="contenidos"/>
+   <forward name="success" path="page.popupimagesminiatures"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="ContenidosForm" path="/expose" scope="session"
+   type="presentation.web.actions.ImagesMiniaturesAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <set-property property="applicationUrl" value="contenidos"/>
+   <forward name="success" path="page.imagesminiatures"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="ContenidosForm" path="/carrousel" scope="session"
+   type="presentation.web.actions.ImagesMiniaturesAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <set-property property="applicationUrl" value="contenidos"/>
+   <forward name="success" path="page.carrousel"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="CompartidosForm" path="/sharedMiniatures" scope="session"
+   type="presentation.web.actions.ImagesMiniaturesAction" validate="false">
+   <set-property property="applicationUrl" value="compartidos"/>
+   <set-property property="applicationZone" value="contenidos"/>
+   <forward name="success" path="page.popupimagesminiatures"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="CompartidosForm" path="/exposeshared" scope="session"
+   type="presentation.web.actions.ImagesMiniaturesAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <set-property property="applicationUrl" value="compartidos"/>
+   <forward name="success" path="page.imagesminiatures"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="CompartidosForm" path="/carrouselshared" scope="session"
+   type="presentation.web.actions.ImagesMiniaturesAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <set-property property="applicationUrl" value="compartidos"/>
+   <forward name="success" path="page.carrousel"/>
+  </action>
+  <!-- Fin de miniaturas -->
+     
+  <!-- MULTIMEDIA -->
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="ContenidosForm" path="/showMultimedia" scope="session"
+   type="presentation.web.actions.MultimediaAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <set-property property="applicationUrl" value="contenidos"/>
+   <forward name="success" path="page.popupmultimedia"/>
+  </action>  
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="CompartidosForm" path="/sharedMultimedia" scope="session"
+   type="presentation.web.actions.MultimediaAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <set-property property="applicationUrl" value="contenidos"/>
+   <forward name="success" path="page.popupmultimedia"/>
+  </action>  
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   path="/soundplugin" scope="session"
+   type="presentation.web.actions.PlayAssetAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <forward name="success" path="page.soundplugin"/>
+  </action>  
+
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   path="/videoplugin" scope="session"
+   type="presentation.web.actions.PlayAssetAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <forward name="success" path="page.videoplugin"/>
+  </action>  
+  <!-- Fin de multimedia -->
+
+  <!-- BUSCADOR -->
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   path="/buscador" scope="request"
+   type="common.presentation.web.actions.EmptyAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <forward name="success" path="page.buscador"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="BuscarForm" path="/buscarcontenido" scope="request"
+   type="presentation.web.actions.BuscaAssetAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <forward name="success" path="page.files"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   path="/buscatag" scope="request"
+   type="presentation.web.actions.BuscaAssetAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <forward name="success" path="page.files"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="TagForm" path="/nube" scope="request"
+   type="presentation.web.actions.CreaNubeAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <forward name="success" path="page.nube"/>
+  </action>
+
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   path="/duplicados" scope="request"
+   type="common.presentation.web.actions.EmptyAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <forward name="success" path="page.duplicados"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   path="/buscarduplicados" scope="request"
+   type="presentation.web.actions.BuscaDuplicadosAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <forward name="success" path="page.files"/>
+  </action>
+  <!-- Fin de buscador -->
+  
+  <!-- Previsualizar assets -->
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="AssetInfoForm" path="/preview" scope="request"
+   type="presentation.web.actions.PreviewAssetAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <set-property property="applicationUrl" value="contenidos"/>
+   <forward name="success" path="page.preview"/>
+  </action>    
+  <!-- Fin de previsualizar -->
+  
+  <!-- Administraci�n de contenidos -->
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="CuotaForm" path="/editcuota" scope="request"
+   type="presentation.web.actions.backend.EditCuotaAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <set-property property="applicationUrl" value="ftpeditcuota"/>
+   <forward name="success" path="page.editcuota"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="CuotaForm" path="/saveCuota" scope="request"
+   type="presentation.web.actions.backend.SaveCuotaAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <set-property property="applicationUrl" value="ftpeditcuota"/>
+   <forward name="success" path="/editcuota.do"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="MimeFileForm" path="/mimefilelist" scope="request"
+   type="presentation.web.actions.backend.MimeFileListAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <set-property property="applicationUrl" value="adminmime"/>
+   <forward name="success" path="page.mimefilelist"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="MimeFileForm" path="/deletemimefile" scope="request"
+   type="presentation.web.actions.backend.DeleteMimeFileAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <set-property property="applicationUrl" value="adminmime"/>
+   <forward name="success" path="/mimefilelist.do"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="MimeFileForm" path="/editmimefile" scope="request"
+   type="presentation.web.actions.backend.EditMimeFileAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <set-property property="applicationUrl" value="adminmime"/>
+   <forward name="success" path="page.editmimefile"/>
+  </action>
+  <action
+   className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+   name="MimeFileForm" path="/savemimefile" scope="request"
+   type="presentation.web.actions.backend.SaveMimeFileAction" validate="false">
+   <set-property property="applicationZone" value="contenidos"/>
+   <set-property property="applicationUrl" value="adminmime"/>
+   <forward name="success" path="/mimefilelist.do"/>
+  </action>
+ </action-mappings>
+ <controller maxFileSize="1G"
+  multipartClass="presentation.ui.ExtendedMultiPartRequestHandler"
+  processorClass="org.apache.struts.tiles.TilesRequestProcessor" tempDir="/tmp"/>
+ <message-resources null="false" parameter="i18n.MessageResources"/>
+ <plug-in className="org.apache.struts.tiles.TilesPlugin">
+  <set-property property="moduleAware" value="true"/>
+  <set-property property="definitions-config" value="/WEB-INF/struts/tiles-defs.xml"/>
+ </plug-in>
+ <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+  <set-property property="pathnames" value="/WEB-INF/struts/validator-rules.xml,/WEB-INF/struts/validation.xml"/>
+ </plug-in>
+</struts-config>

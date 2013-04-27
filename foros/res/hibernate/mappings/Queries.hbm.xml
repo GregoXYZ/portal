@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 21-may-2009 22:46:15 by Hibernate Tools 3.2.4.CR1 -->
+<hibernate-mapping> 
+ <sql-query name="Foros.foro">
+	<return-scalar column="ent_pk" type="java.lang.Long"/>
+	<return-scalar column="con_pk" type="java.lang.Long"/>
+	<return-scalar column="ent_subject" type="string"/>
+	<return-scalar column="ent_restringida" type="boolean"/>
+	<return-scalar column="con_data" type="string"/>
+	<return-scalar column="con_fecha_alta" type="java.lang.Long"/>
+   	<![CDATA[     
+		SELECT 	e.ent_pk, 
+				c.con_pk, 
+				e.ent_subject, 
+				e.ent_restringida,
+				c.con_data, 
+				MAX(c.con_fecha_alta)
+		FROM 	foros.contenidos c,
+				foros.entradas e
+		WHERE 	e.ent_pk = c.ent_fk AND
+				exists (SELECT 	'1' 
+						FROM 	destinos d
+						WHERE 	d.ent_fk = e.ent_pk
+						AND 	d.usu_fk = :user)
+		GROUP BY e.ent_pk
+		ORDER BY c.con_fecha_alta Desc
+	]]>
+ </sql-query> 
+ <sql-query name="Foros.results">
+	<return-scalar column="ent_pk" type="java.lang.Long"/>
+	<return-scalar column="con_pk" type="java.lang.Long"/>
+	<return-scalar column="ent_subject" type="string"/>
+	<return-scalar column="ent_restringida" type="boolean"/>
+	<return-scalar column="con_data" type="string"/>
+	<return-scalar column="usu_fk" type="java.lang.Long"/>
+	<return-scalar column="con_fecha_alta" type="java.lang.Long"/>
+   	<![CDATA[     
+		SELECT 	e.ent_pk, 
+				c.con_pk, 
+				e.ent_subject, 
+				e.ent_restringida,
+				c.con_data, 
+				c.usu_fk,
+				c.con_fecha_alta
+		FROM 	foros.contenidos c,
+				foros.entradas e
+		WHERE 	e.ent_pk = c.ent_fk AND
+				exists (SELECT 	'1' 
+						FROM 	destinos d
+						WHERE 	d.ent_fk = e.ent_pk
+						AND 	d.usu_fk = :user)
+		ORDER BY c.con_fecha_alta Desc
+	]]>
+ </sql-query> 
+ <sql-query name="Foros.threats">
+	<return-scalar column="ent_pk" type="java.lang.Long"/>
+	<return-scalar column="con_pk" type="java.lang.Long"/>
+	<return-scalar column="ent_subject" type="string"/>
+	<return-scalar column="ent_restringida" type="boolean"/>
+	<return-scalar column="con_data" type="string"/>
+	<return-scalar column="usu_fk" type="java.lang.Long"/>
+	<return-scalar column="con_fecha_alta" type="java.lang.Long"/>
+   	<![CDATA[     
+		SELECT 	e.ent_pk, 
+				c.con_pk, 
+				e.ent_subject, 
+				e.ent_restringida,
+				c.con_data, 
+				c.usu_fk,
+				c.con_fecha_alta
+		FROM 	foros.contenidos c,
+				foros.entradas e
+		WHERE 	e.ent_pk = c.ent_fk AND
+				e.ent_pk = :entrada AND
+				exists (SELECT 	'1' 
+						FROM 	destinos d
+						WHERE 	d.ent_fk = e.ent_pk
+						AND 	d.usu_fk = :user)
+		ORDER BY c.con_fecha_alta Desc
+	]]>
+ </sql-query> 
+ <sql-query name="Foros.contenido">
+	<return-scalar column="ent_pk" type="java.lang.Long"/>
+	<return-scalar column="con_pk" type="java.lang.Long"/>
+	<return-scalar column="ent_subject" type="string"/>
+	<return-scalar column="ent_restringida" type="boolean"/>
+	<return-scalar column="con_data" type="string"/>
+	<return-scalar column="usu_fk" type="java.lang.Long"/>
+	<return-scalar column="con_fecha_alta" type="java.lang.Long"/>
+   	<![CDATA[     
+		SELECT 	e.ent_pk, 
+				c.con_pk, 
+				e.ent_subject, 
+				e.ent_restringida, 
+				c.con_data, 
+				c.usu_fk,
+				c.con_fecha_alta
+		FROM 	foros.contenidos c,
+				foros.entradas e
+		WHERE 	e.ent_pk = c.ent_fk AND
+				c.con_pk = :contenido AND
+				exists (SELECT 	'1' 
+						FROM 	destinos d
+						WHERE 	d.ent_fk = e.ent_pk
+						AND 	d.usu_fk = :user)
+	]]>
+ </sql-query> 
+ <sql-query name="Foros.entradas">
+ 	<return alias="r" class="business.beans.Entradas"/>
+   	<![CDATA[      
+		SELECT 	e.ent_pk, 
+				e.ent_fecha_alta,
+				e.ent_subject, 
+				e.ent_restringida,
+				e.usu_fk
+		FROM 	foros.entradas e
+		WHERE	exists (select '1'
+						from 	foros.destinos d
+						where	e.ent_pk = d.ent_fk
+						and		d.usu_fk = :user)
+		ORDER BY e.ent_fecha_alta Desc
+	]]>
+ </sql-query> 
+ <sql-query name="Foros.contenidos">
+ 	<return alias="r" class="business.beans.Contenidos"/>
+   	<![CDATA[      
+		SELECT 	c.con_pk,
+				c.con_data,
+				c.con_fecha_alta,
+				c.ent_fk,
+				c.usu_fk,
+				c.con_fk 
+		FROM 	foros.contenidos c
+		WHERE	exists (select '1'
+						from 	foros.entradas e,
+								foros.destinos d
+								where	e.ent_pk = d.ent_fk
+								and	c.ent_fk = e.ent_pk
+								and	e.ent_pk = :entrada
+								and	d.usu_fk = :user)
+		ORDER BY c.con_fecha_alta Desc
+	]]>
+ </sql-query> 
+ <sql-query name="Foros.ultimoContenido">
+ 	<return alias="r" class="business.beans.Contenidos"/>
+   	<![CDATA[      
+		SELECT 	c.con_pk, 
+				c.con_data, 
+				c.con_fecha_alta, 
+				c.ent_fk, 
+				c.usu_fk, 
+				c.con_fk 
+		FROM 	foros.contenidos c
+		WHERE 	c.ent_fk = :entrada
+		AND		c.con_fecha_alta = (
+					SELECT 	MAX(c.con_fecha_alta)
+					FROM 	foros.contenidos c
+					WHERE 	c.ent_fk = :entrada
+					)
+	]]>
+ </sql-query> 
+</hibernate-mapping>

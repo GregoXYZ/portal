@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17-ene-2009 23:22:57 by Hibernate Tools 3.2.4.CR1 -->
+<hibernate-mapping>
+    <class name="business.beans.TiposAssets" table="tipos_assets" catalog="contenidos">
+        <id name="tipAssPk" type="java.lang.Long">
+            <column name="tip_ass_pk" />
+            <generator class="identity" />
+        </id>
+        <property name="tipAssUkCodigo" type="string">
+            <column name="tip_ass_uk_codigo" length="25" not-null="true" unique="true" />
+        </property>
+        <property name="tipAssNombre" type="string">
+            <column name="tip_ass_nombre" length="100" not-null="true" />
+        </property>
+        <property name="tipAssDescripcion" type="string">
+            <column name="tip_ass_descripcion" length="200" />
+        </property>
+        <set name="assetses" inverse="true">
+            <key>
+                <column name="tip_ass_fk" not-null="true" />
+            </key>
+            <one-to-many class="business.beans.Assets" />
+        </set>
+    </class>
+</hibernate-mapping>

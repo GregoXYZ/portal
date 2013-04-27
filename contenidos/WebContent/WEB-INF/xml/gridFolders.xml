@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grid 	name="gridFolders" 
+		style="tablesorter orderfolders" 
+		title="Carpetas"
+		showAlertNoData="false" 
+		editable="false">
+
+	<bundle>i18n.grid</bundle>
+
+	<with-header>true</with-header>
+	<with-footer>false</with-footer>
+
+	<showRowNums>true</showRowNums>
+
+	<rowId>assPk</rowId>
+
+	<column id="Nombre">
+		<header>Nombre</header>
+		<reference>assNombre</reference>
+		<icon>icon</icon>
+		<action name="recarga" 
+				param="carPk" 
+				formname="ContenidosForm"
+				onClick="onClick">
+		</action>
+	</column>
+	<column id="Descripcion">
+		<header>Descripción</header>
+		<reference>assDescripcion</reference>
+	</column>
+	<column id="FAlta">
+		<header>Fecha de alta</header>
+		<reference>assFechaAlta</reference>
+	</column>
+
+	<actions>
+		<row-action name="updateFolder" 
+					image="/contenidos/images/folder-update.png" >
+			<text>Modificar</text>
+			<title>Modificar carpeta</title>
+			<style>action</style>
+			<onClick>onEdit</onClick>
+		</row-action>
+		<row-action name="addForOper" 
+					image="/contenidos/images/oper.png"> 
+			<text>Opera con el elemento</text>
+			<title>Opera con el elemento</title>
+			<style>action</style>
+			<onClick>onOperation</onClick>
+		</row-action>
+		<row-action name="webRefence" 
+					image="/contenidos/images/webref.png"> 
+			<text>Referencias</text>
+			<title>Referencias en la web</title>
+			<style>action</style>
+			<onClick>onReference</onClick>
+		</row-action>
+		<row-action name="deleteFolder" 
+					image="/portal/images/delete.png" >
+			<text>Borrar</text>
+			<title>Borrar carpeta</title>
+			<style>action</style>
+			<onClick>onDelete</onClick>
+		</row-action>
+		<global-action name="create" 
+					   image="images/folder-new.png" >
+			<text>Nueva carpeta</text>
+			<title>Nueva carpeta</title>
+			<style>menu</style>
+			<onClick>javascript:ajaxPopup("newfolder.do");</onClick>
+		</global-action>
+		<global-action name="refresh" 
+					   image="/portal/images/refresh.png" >
+			<text>Actualizar</text>
+			<title>Actualiza caretas</title>
+			<style>menu</style>
+			<onClick>javascript:refrescaCarpetas(pensandoAjax);</onClick>
+		</global-action>
+	</actions>
+</grid>

@@ -1,0 +1,5 @@
+<Context reloadable="false" antiJARLocking="true" antiResourceLocking="false">
+	<!-- Manager className="org.apache.catalina.session.PersistentManager" saveOnRestart="false" />
+	<ResourceLink global="jdbc/tomcatDS" name="jdbc/tomcatDS" type="javax.sql.DataSource"/ -->
+	<Manager pathname=""/>
+</Context>

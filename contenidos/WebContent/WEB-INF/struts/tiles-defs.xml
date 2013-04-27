@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+                                   "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+<tiles-definitions>
+	<!-- Definición de layouts -->
+	<definition name="layouts.empty" path="/WEB-INF/jsp/common/layouts/empty.jsp">
+	</definition>
+
+	<definition name="layouts.defaultLayout" path="/WEB-INF/jsp/common/layouts/default.jsp">
+		<put name="title" value="title.empty" />
+		<put name="encabezado" value="/WEB-INF/jsp/common/header.jsp" />
+		<put name="menu" value="/WEB-INF/jsp/common/menu.jsp" />
+		<put name="principal" value="/WEB-INF/jsp/common/empty.jsp" />
+		<put name="footer" value="/WEB-INF/jsp/common/footer.jsp" />
+	</definition>
+	<definition name="layouts.single" path="/WEB-INF/jsp/common/layouts/single.jsp">
+		<put name="principal" value="/WEB-INF/jsp/common/empty.jsp" />
+	</definition>
+
+	<!-- Definición de páginas -->
+	<definition name="page.empty" path="/WEB-INF/jsp/common/empty.jsp" />
+	<definition name="page.nobrowser" path="/WEB-INF/jsp/common/nobrowser.jsp" />
+	<definition name="page.infoweb" path="/WEB-INF/jsp/common/infoweb.jsp"/>
+
+	<definition name="page.procesando" path="/WEB-INF/jsp/procesando.jsp" />
+
+	<definition extends="layouts.defaultLayout" name="page.home">
+		<put name="principal" value="/WEB-INF/jsp/contenidos.jsp" />
+	</definition>
+	<definition extends="layouts.single" name="page.files">
+		<put name="principal" value="/WEB-INF/jsp/ficheros.jsp" />
+	</definition>
+	<definition extends="layouts.single" name="page.links">
+		<put name="principal" value="/WEB-INF/jsp/links.jsp" />
+	</definition>
+	<definition extends="layouts.single" name="page.folders">
+		<put name="principal" value="/WEB-INF/jsp/carpetas.jsp" />
+	</definition>
+	<definition extends="layouts.single" name="page.ruta">
+		<put name="principal" value="/WEB-INF/jsp/path.jsp" />
+	</definition>
+	<definition extends="layouts.single" name="page.uploadinfo">
+		<put name="principal" value="/WEB-INF/jsp/uploadinfo.jsp" />
+	</definition>
+
+	<definition extends="layouts.single" name="page.newfolder">
+		<put name="principal" value="/WEB-INF/jsp/nuevaCarpeta.jsp" />
+	</definition>
+	<definition extends="layouts.single" name="page.newfile">
+		<put name="principal" value="/WEB-INF/jsp/nuevoFichero.jsp" />
+	</definition>
+
+	<definition extends="layouts.single" name="page.updatefile">
+		<put name="principal" value="/WEB-INF/jsp/updateFichero.jsp" />
+	</definition>
+	<definition extends="layouts.single" name="page.updatefolder">
+		<put name="principal" value="/WEB-INF/jsp/updateCarpeta.jsp" />
+	</definition>
+
+	<definition extends="layouts.single" name="page.selectionfiles">
+		<put name="principal" value="/WEB-INF/jsp/shareMultiplesFiles.jsp" />
+	</definition>
+
+	<definition extends="layouts.single" name="page.popupimagesminiatures">
+		<put name="principal" value="/WEB-INF/jsp/miniaturesImages.jsp" />
+	</definition>
+	<definition extends="layouts.single" name="page.imagesminiatures">
+		<put name="principal" value="/WEB-INF/jsp/exposeImages.jsp" />
+	</definition>
+	<definition extends="layouts.single" name="page.carrousel">
+		<put name="principal" value="/WEB-INF/jsp/scrollImages.jsp" />
+	</definition>
+
+	<definition extends="layouts.single" name="page.popupmultimedia">
+		<put name="principal" value="/WEB-INF/jsp/multimedia.jsp" />
+	</definition>
+	<definition extends="layouts.single" name="page.soundplugin">
+		<put name="principal" value="/WEB-INF/jsp/soundplugin.jsp" />
+	</definition>
+
+	<definition extends="layouts.single" name="page.videoplugin">
+		<put name="principal" value="/WEB-INF/jsp/video.jsp" />
+	</definition>
+
+	<definition extends="layouts.single" name="page.preview">
+		<put name="principal" value="/WEB-INF/jsp/viewasset.jsp" />
+	</definition>
+
+	<definition extends="layouts.single" name="page.userinfo">
+		<put name="principal" value="/WEB-INF/jsp/userInfo.jsp" />
+	</definition>
+	<definition extends="layouts.single" name="page.assetoper">
+		<put name="principal" value="/WEB-INF/jsp/assetOper.jsp" />
+	</definition>
+
+	<definition extends="layouts.defaultLayout" name="page.compartidos">
+		<put name="principal" value="/WEB-INF/jsp/compartidos.jsp" />
+	</definition>
+	<definition extends="layouts.single" name="page.ficheroscompartidos">
+		<put name="principal" value="/WEB-INF/jsp/ficheroscompartidos.jsp" />
+	</definition>
+	<definition extends="layouts.single" name="page.updatesharedfile">
+		<put name="principal" value="/WEB-INF/jsp/updateSharedFile.jsp"/>
+	</definition>
+
+	<definition extends="layouts.single" name="page.updatetags">
+		<put name="principal" value="/WEB-INF/jsp/tags.jsp"/>
+	</definition>
+
+	<definition extends="layouts.single" name="page.buscador">
+		<put name="principal" value="/WEB-INF/jsp/buscador.jsp" />
+	</definition>
+	<definition extends="layouts.single" name="page.nube">
+		<put name="principal" value="/WEB-INF/jsp/nube.jsp"/>
+	</definition>
+	<definition extends="layouts.single" name="page.buscado">
+		<put name="principal" value="/WEB-INF/jsp/resultadoBusqueda.jsp"/>
+	</definition>
+
+	<definition extends="layouts.single" name="page.duplicados">
+		<put name="principal" value="/WEB-INF/jsp/duplicados.jsp"/>
+	</definition>
+	
+	<definition extends="layouts.single" name="page.links">
+		<put name="principal" value="/WEB-INF/jsp/links.jsp"/>
+	</definition>
+	<definition extends="layouts.single" name="page.adminlinks">
+		<put name="principal" value="/WEB-INF/jsp/adminLinks.jsp"/>
+	</definition>
+
+	<definition extends="layouts.single" name="page.fileinfo">
+		<put name="principal" value="/WEB-INF/jsp/fileInfo.jsp" />
+	</definition>
+
+	<definition extends="layouts.defaultLayout" name="page.editcuota">
+		<put name="principal" value="/WEB-INF/jsp/backend/editCuota.jsp" />
+	</definition>
+	<definition extends="layouts.defaultLayout" name="page.mimefilelist">
+		<put name="principal" value="/WEB-INF/jsp/backend/mimefiles.jsp" />
+	</definition>
+	<definition extends="layouts.defaultLayout" name="page.editmimefile">
+		<put name="principal" value="/WEB-INF/jsp/backend/editmimefile.jsp" />
+	</definition>
+
+	<definition extends="layouts.single" name="page.underconstruction">
+		<put name="principal" value="/WEB-INF/jsp/common/underconstruction.jsp"/>
+	</definition>
+	
+	<definition extends="layouts.single" name="page.error">
+		<put name="principal" value="/WEB-INF/jsp/common/error.jsp"/>
+	</definition>
+	<definition extends="layouts.defaultLayout" name="page.errorpage">
+		<put name="principal" value="/WEB-INF/jsp/common/errorpage.jsp"/>
+	</definition>
+</tiles-definitions>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grid 	name="gridAssetsSearch" 
+		style="ordersearch tablesorter" 
+		title="Resultados"
+		showAlertNoData="false" 
+		editable="false">
+
+	<bundle>i18n.grid</bundle>
+
+	<with-header>true</with-header>
+	<with-footer>false</with-footer>
+
+	<showRowNums>true</showRowNums>
+
+	<rowId>assPk</rowId>
+	
+	<column id="Nombre">
+		<header>Nombre</header>
+		<reference>assNombre</reference>
+		<icon>icon</icon>
+		<action name="download" 
+				param="assPk" 
+				formname="download"
+				onMouseOver="onMouseOver"
+				onClick="onClick">
+		</action>
+	</column>
+	<column id="Descripcion">
+		<header>Descripción</header>
+		<reference>assDescripcion</reference>
+	</column>
+	<column id="Tipo">
+		<header>Tipo</header>
+		<reference>mimFilExtension</reference>
+	</column>
+	<column id="Tamño">
+		<header>Tamaño</header>
+		<reference>ficSize</reference>
+	</column>
+	<actions>
+		<row-action name="irA" 
+					image="/contenidos/images/go-jump.png"> 
+			<text>Abrir la carpeta contenedora</text>
+			<title>Abrir la carpeta contenedora</title>
+			<style>action</style>
+			<onClick>onReference</onClick>
+		</row-action>
+		<row-action name="updateFile" 
+					image="/contenidos/images/preferences.png" >
+			<text>Modificar</text>
+			<title>Modificar fichero</title>
+			<style>action</style>
+			<onClick>onEdit</onClick>
+		</row-action>
+		<row-action name="addForOper" 
+					image="/contenidos/images/oper.png"> 
+			<text>Opera con el elemento</text>
+			<title>Opera con el elemento</title>
+			<style>action</style>
+			<onClick>onOperation</onClick>
+		</row-action>
+		<row-action name="deleteFile" 
+					image="/portal/images/delete.png"> 
+			<text>Borrar</text>
+			<title>Borrar fichero</title>
+			<style>action</style>
+			<onClick>onDelete</onClick>
+		</row-action>
+		<global-action name="refresh" 
+					   image="/portal/images/refresh.png" >
+			<text>Actualizar</text>
+			<title>Actualiza búsqueda</title>
+			<onClick>javascript:buscaContenido()</onClick>
+		</global-action>
+	</actions>
+</grid>

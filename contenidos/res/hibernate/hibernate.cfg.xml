@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.password">enter</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/contenidos</property>
+        <property name="hibernate.connection.username">adm_portal</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+		<!-- Disable the second-level cache  -->
+		<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>		
+		<property name="hibernate.cache.use_second_level_cache">false</property>
+		<!-- Echo all executed SQL to stdout -->
+		<property name="show_sql">false</property>
+
+		<property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+		<property name="hibernate.cglib.use_reflection_optimizer">true</property>
+		<!-- Usamos interprete "clasico" para prevenir errores de Antlr -->
+		<!-- <property name="query.factory_class">org.hibernate.hql.classic.ClassicQueryTranslatorFactory</property> -->
+
+        <mapping resource="hibernate/mappings/Carpetas.hbm.xml" />
+        <mapping resource="hibernate/mappings/AccesosDirectos.hbm.xml" />
+        <mapping resource="hibernate/mappings/TiposAssets.hbm.xml" />
+        <mapping resource="hibernate/mappings/Assets.hbm.xml" />
+        <mapping resource="hibernate/mappings/Ficheros.hbm.xml" />
+        <mapping resource="hibernate/mappings/Queries.hbm.xml" />
+        <mapping resource="hibernate/mappings/Cuotas.hbm.xml" />
+        <mapping resource="hibernate/mappings/MimeFiles.hbm.xml" />
+		<!--
+        <mapping resource="hibernate/mappings/MimeTypes.hbm.xml" />
+        <mapping resource="hibernate/mappings/ExtensionFiles.hbm.xml" />
+		-->
+        <mapping resource="hibernate/mappings/Compartidos.hbm.xml" />
+        <mapping resource="hibernate/mappings/Links.hbm.xml" />
+        <mapping resource="hibernate/mappings/Tags.hbm.xml" />
+        <mapping resource="hibernate/mappings/TagsAsset.hbm.xml" />
+        <mapping resource="hibernate/mappings/Parametros.hbm.xml" />
+        <mapping resource="hibernate/mappings/BusquedasPersonales.hbm.xml" />
+        
+        <mapping resource="hibernate/mappings/com.UsuariosGrupos.hbm.xml" />
+        <mapping resource="hibernate/mappings/com.GruposMenus.hbm.xml" />
+        <mapping resource="hibernate/mappings/com.Usuarios.hbm.xml" />
+        <mapping resource="hibernate/mappings/com.Grupos.hbm.xml" />
+        <mapping resource="hibernate/mappings/com.Queries.hbm.xml" />
+        <mapping resource="hibernate/mappings/com.Urls.hbm.xml" />
+        <mapping resource="hibernate/mappings/com.UrlsGrupos.hbm.xml" />
+        <mapping resource="hibernate/mappings/com.Menus.hbm.xml" />
+        <mapping resource="hibernate/mappings/com.Zonas.hbm.xml" />
+        <mapping resource="hibernate/mappings/com.Sessions.hbm.xml" />
+        <mapping resource="hibernate/mappings/com.Bugs.hbm.xml" />
+        <mapping resource="hibernate/mappings/com.Avisos.hbm.xml" />
+        <mapping resource="hibernate/mappings/com.TiposAvisos.hbm.xml" />
+        <mapping resource="hibernate/mappings/com.BugEstados.hbm.xml" />
+        <mapping resource="hibernate/mappings/com.BugPrioridades.hbm.xml" />
+        <mapping resource="hibernate/mappings/com.RelacionesUsuarios.hbm.xml" />
+        <mapping resource="hibernate/mappings/com.EstadosRelacionUsuarios.hbm.xml" />
+        <mapping resource="hibernate/mappings/com.Mails.hbm.xml" />
+    </session-factory>
+</hibernate-configuration>

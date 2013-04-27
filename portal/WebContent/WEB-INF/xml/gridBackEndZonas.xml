@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grid 	name="gridBackEndZonas"
+		style="tablesorter marco" 
+		title="Zonas"
+		showAlertNoData="false" 
+		editable="false">
+
+	<bundle>i18n.grid</bundle>
+
+	<select-key>zonPk</select-key>
+	
+	<column id="Codigo">
+		<header>Código</header>
+		<reference>zonCodigo</reference>
+	</column>
+	<column id="Descripcion">
+		<header>Descripción</header>
+		<reference>zonDesc</reference>
+	</column>
+
+	<actions>
+		<row-action name="editZona" 
+					image="/portal/images/edit.png" >
+			<text>Edita</text>
+			<title>Edita zona</title>
+			<style>action</style>
+			<onClick>onClick</onClick>
+		</row-action>
+		<row-action name="deleteZona" 
+					image="/portal/images/delete.png" 
+					message="Va eliminar la zona.\n¿Desea continuar?" 
+					confirm="true">
+			<text>Borrar</text>
+			<title>Borrar zona</title>
+			<style>action</style>
+			<param>zonPk</param>
+			<formname>deleteZona</formname>
+		</row-action>
+		<global-action name="newZona" 
+					   image="/portal/images/add.png" >
+			<text>Nueva</text>
+			<title>Nuenva zona</title>
+			<onClick>javascript:ajaxPopup("/portal/backend/editzona.do")</onClick>
+		</global-action>
+	</actions>
+</grid>

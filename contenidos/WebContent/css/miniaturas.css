@@ -1,0 +1,132 @@
+@CHARSET "UTF-8";
+
+#contenido #miniaturas {
+	text-align: center;
+	vertical-align: middle;
+	padding: 2px 0px 10px 0px;
+	max-width: 800px;
+	font-size: 0.7em;
+}
+
+#miniaturas {
+	overflow-x: auto;
+}
+
+#miniaturas .miniatura {
+	opacity: 0.7;
+	width: 130px;
+	height: 130px;
+	border: 1px solid threedshadow;
+	margin: 5px 3px 2px 3px;
+	display: inline-block;
+	vertical-align: top;
+	padding-bottom: 5px;
+}
+
+#miniaturas .fail {
+	background-color: #FFBEBE;
+}
+
+#miniaturas .miniatura:hover {
+	opacity: 1;
+	background-color: #666;
+}
+
+#miniaturas .miniatura img {
+	margin-top: 3px;
+	max-width: 120px;;
+	max-height: 120px;
+}
+
+#miniaturas #amplia {
+	vertical-align: middle;
+	text-align: center;
+	width: 98%;
+	max-height: 500px;
+}
+
+#miniaturas #amplia img {
+	max-height: 500px;
+}
+
+#miniaturas #carrousel {
+	width: 95%;
+	border: 1px solid #ffffff;
+	height: 225px;
+	position: relative;
+	overflow: hidden;
+	z-index: 2;
+	padding: 0px 10px;
+	margin-bottom: 10px;
+}
+
+#miniaturas #carrousel ul {
+	top: 0;
+	left: 0;
+	z-index: 1;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#miniaturas #carrousel ul li {
+	display: inline;
+	float: left;
+	padding: 5px 0;
+	width: 150px;
+	height: 190px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+#miniaturas #carrousel .carousel-wrap {
+	width: 600px;
+	float: left;
+}
+
+#miniaturas #carrousel .center-wrap {
+	width: 600px;
+}
+
+#miniaturas #carousel-wrap img {
+	max-height: 150px;
+}
+
+#miniaturas #carrousel .carousel-control {
+	display: inline;
+	float: left;
+	margin: 15px 0 0;
+	padding: 5px 10px;
+	font-weight: bold;
+	font-size: 11px;
+	cursor: pointer;
+	/*background: #ddd;*/
+}
+
+#miniaturas #carrousel .disabled {
+	color: #ddd;
+	cursor: default;
+	opacity: 0.3;
+	/*background: #f4f4f4;*/
+}
+
+#miniaturas #carrousel div.center-wrap a {
+	margin: 0 2px;
+	padding: 2px 5px;
+	border: 1px solid #4f4f4f;
+	background: #333;
+	cursor: pointer;
+	color: #fff;
+	-moz-border-radius: 12px;
+	-webkit-border-radius: 12px;
+}
+
+#miniaturas #carrousel div.center-wrap a.active {
+	font-weight: bold;
+	color: #5db0e6;
+}
+
+#viewdata {
+	overflow-x: auto;
+}

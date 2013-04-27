@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 21-mar-2009 0:58:22 by Hibernate Tools 3.2.4.GA -->
+<hibernate-mapping>
+    <class name="common.business.beans.EstadosRelacionUsuarios" table="estados_relacion_usuarios" catalog="system">
+        <id name="estRelUsuPk" type="java.lang.Integer">
+            <column name="est_rel_usu_pk" />
+            <generator class="identity" />
+        </id>
+        <property name="estRelUsuUkCodigo" type="string">
+            <column name="est_rel_usu_uk_codigo" length="50" not-null="true" />
+        </property>
+        <set name="relacionesUsuarioses" inverse="true" lazy="true" table="relaciones_usuarios" fetch="select">
+            <key>
+                <column name="est_rel_usu_fk" not-null="true" />
+            </key>
+            <one-to-many class="common.business.beans.RelacionesUsuarios" />
+        </set>
+    </class>
+</hibernate-mapping>

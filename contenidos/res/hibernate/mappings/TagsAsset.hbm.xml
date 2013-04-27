@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 23-abr-2009 23:45:15 by Hibernate Tools 3.2.4.GA -->
+<hibernate-mapping>
+    <class name="business.beans.TagsAsset" table="tags_asset" catalog="contenidos">
+        <id name="tagAssPk" type="java.lang.Long">
+            <column name="tag_ass_pk" />
+            <generator class="identity" />
+        </id>
+        <property name="tagFk" type="long">
+            <column name="tag_fk" not-null="true" />
+        </property>
+        <property name="assFk" type="long">
+            <column name="ass_fk" not-null="true" />
+        </property>
+        <property name="usuFk" type="long">
+            <column name="usu_fk" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

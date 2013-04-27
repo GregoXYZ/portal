@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+                               "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+	<data-sources/>
+	<form-beans>
+		<form-bean name="EmptyForm" type="common.presentation.web.forms.EmptyForm"/>
+		<form-bean name="SearchForm" type="common.presentation.web.forms.SearchForm"/>
+		<form-bean name="LoginForm" type="presentation.web.forms.LoginForm"/>
+		<form-bean name="SessionForm" type="presentation.web.forms.SessionForm"/>
+		<form-bean name="UserForm" type="presentation.web.forms.UserForm"/>
+		<form-bean name="RegisterForm" type="presentation.web.forms.RegisterForm"/>
+		<form-bean name="ChangePasswordForm" type="presentation.web.forms.ChangePasswordForm"/>
+		<form-bean name="BugForm" type="presentation.web.forms.BugForm"/>
+		<form-bean name="RelacionForm" type="presentation.web.forms.RelacionForm"/>
+		<form-bean name="AvisoForm" type="presentation.web.forms.AvisoForm"/>
+	</form-beans>
+	<global-exceptions>
+		<exception handler="common.presentation.security.ExceptionHandler"
+			key="lang.exception" type="java.lang.Exception"/>
+	</global-exceptions>
+	<global-forwards>
+		<!-- 
+		<forward contextRelative="true" name="webError" path="/error.do"/>
+		 -->
+		<forward contextRelative="true" name="noLoginException" path="/home.do"/>
+		<forward contextRelative="true" name="noBrowser" path="/nobrowser.do"/>
+		<forward contextRelative="true" name="errorNoControlado" path="/errorpage.do"/>
+	</global-forwards>
+	<action-mappings>
+		<action forward="page.test" path="/test"/>
+
+		<action forward="page.empty" path="/empty"/>
+		<action forward="page.nobrowser" path="/nobrowser"/>
+		<action forward="page.underconstruction" path="/underconstruction"/>
+		<action forward="page.infoweb" path="/infoweb"/>
+
+		<action
+			className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+			path="/mensajeria" scope="request"
+			type="common.presentation.web.actions.EmptyAction" validate="false">
+			<set-property property="applicationZone" value="portal" />
+			<forward name="success" path="page.mensajeria" />
+		</action>
+
+		<action
+			className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+			path="/error" scope="request"
+			type="common.presentation.web.actions.ErrorAction" validate="false">
+			<set-property property="applicationZone" value="portal" />
+			<forward name="success" path="page.error" />
+		</action>
+		<action
+			className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+			path="/errorpage" scope="request"
+			type="common.presentation.web.actions.ErrorAction" validate="false">
+			<set-property property="applicationZone" value="portal" />
+			<forward name="success" path="page.errorpage" />
+		</action>
+		<action
+			className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+			path="/back" scope="request"
+			type="common.presentation.web.actions.BackAction" validate="false">
+			<set-property property="applicationZone" value="portal"/>
+		</action>
+			
+		<action className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+		 		name="EmptyForm" 
+		 		path="/home" 
+		 		scope="request"
+		 		type="presentation.web.actions.HomeAction" 
+		 		validate="false">
+			<forward name="noLogin" path="page.start"/>
+			<forward name="Login" path="/homePortal.do"/>
+		</action>
+		<action className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+		 		name="RegisterForm" 
+		 		path="/register" 
+		 		scope="request"
+		 		type="presentation.web.actions.CreateUserAction" 
+		 		validate="false">
+			<forward name="success" path="page.register"/>
+		</action>
+		<action className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+				name="RegisterForm" 
+				path="/createUser" 
+				scope="request"
+				type="presentation.web.actions.RegisterAction" 
+				validate="false">
+			<forward name="success" path="/home.do"/>
+			<forward name="error" path="/home.do"/>
+		</action>
+
+		<action className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+		 		name="LoginForm" 
+		 		path="/sessiontimeout" 
+		 		scope="request"
+		 		type="presentation.web.actions.TimeOutAction" 
+		 		validate="false">
+			<forward name="success" path="page.sessiontimeout"/>
+		</action>
+		<action className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+		 		name="LoginForm" 
+		 		path="/login" 
+		 		scope="request"
+		 		type="presentation.web.actions.InitAction" 
+		 		validate="false">
+			<forward name="success" path="page.login"/>
+		</action>
+		<action className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+				name="LoginForm" 
+				path="/initSession" 
+				scope="request"
+		 		type="presentation.web.actions.LoginAction" 
+		 		validate="false">
+			<forward name="success" path="page.home"/>
+			<forward name="errorlogin" path="/home.do"/>
+		</action>
+		<action className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+		 		name="UserForm" 
+		 		path="/newpass" 
+		 		scope="request"
+		 		type="common.presentation.web.actions.EmptyAction" 
+		 		validate="false">
+			<forward name="success" path="page.newpass"/>
+		</action>
+		<action className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+		 		name="UserForm" 
+		 		path="/sendpass" 
+		 		scope="request"
+		 		type="presentation.web.actions.SendPassAction" 
+		 		validate="false">
+			<forward name="success" path="/home.do"/>
+		</action>
+		<action className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+		 		name="EmptyForm" 
+		 		path="/homePortal" 
+		 		scope="request"
+		 		type="common.presentation.web.actions.EmptyAction" 
+		 		validate="false">
+			<set-property property="applicationZone" value="portal"/>
+			<forward name="success" path="page.home"/>
+		</action>
+		<action className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+		 		name="EmptyForm" 
+		 		path="/exit" 
+		 		scope="request"
+		 		type="presentation.web.actions.ExitAction" 
+		 		validate="false">
+			<set-property property="applicationZone" value="portal"/>
+			<forward name="success" path="/home.do"/>
+		</action>
+		<action className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+		 		name="UserForm" 
+		 		path="/userData" 
+		 		scope="request"
+		 		type="presentation.web.actions.EditUserAction" 
+		 		validate="false">
+			<set-property property="applicationZone" value="portal"/>
+			<forward name="success" path="page.userdata"/>
+		</action>
+		<action className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+		 		name="UserForm" 
+		 		path="/updateUser" 
+		 		scope="request"
+		 		type="presentation.web.actions.UpdateUserAction" 
+		 		validate="false">
+			<set-property property="applicationZone" value="portal"/>
+			<forward name="success" path="/homePortal.do"/>
+			<forward name="error" path="/userData.do"/>
+		</action>
+		<action className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+		 		name="SessionForm" 
+		 		path="/sessionInfo" 
+		 		scope="request"
+		 		type="presentation.web.actions.SessionInfoAction" 
+		 		validate="false">
+			<set-property property="applicationZone" value="portal"/>
+			<set-property property="applicationUrl" value="sessionInfo"/>
+			<forward name="success" path="page.sessionInfo"/>
+		</action>
+		<action className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+		 		name="EmptyForm" 
+		 		path="/content" 
+		 		scope="request"
+		 		type="common.presentation.web.actions.EmptyAction" 
+		 		validate="false">
+			<forward name="success" path="page.content"/>
+		</action>
+		<action className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+		 		name="ChangePasswordForm" 
+		 		path="/changePassword" 
+		 		scope="request"
+		 		type="common.presentation.web.actions.EmptyAction" 
+		 		validate="false">
+			<set-property property="applicationZone" value="portal"/>
+			<forward name="success" path="page.changepassword"/>
+		</action>
+		<action className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+		 		name="ChangePasswordForm" 
+		 		path="/savepass" 
+		 		scope="request"
+		 		type="presentation.web.actions.SavePasswordAction" 
+		 		validate="false">
+			<set-property property="applicationZone" value="portal"/>
+			<forward name="success" path="/home.do"/>
+		</action>
+		<action className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+		 		name="BugForm" 
+		 		path="/reportBug" 
+		 		scope="request"
+		 		type="presentation.web.actions.ReportBugAction" 
+		 		validate="false">
+			<set-property property="applicationZone" value="portal"/>
+			<forward name="success" path="page.reportBug"/>
+		</action>
+		<action className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+		 		name="BugForm" 
+		 		path="/saveBug" 
+		 		scope="request"
+		 		type="presentation.web.actions.SaveBugAction" 
+		 		validate="false">
+			<set-property property="applicationZone" value="portal"/>
+			<forward name="success" path="/homePortal.do"/>
+		</action>
+
+		<action className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+		 		name="AvisoForm" 
+		 		path="/avisos" 
+		 		scope="request"
+		 		type="presentation.web.actions.AvisosUsuarioAction" 
+		 		validate="false">
+			<set-property property="applicationZone" value="portal"/>
+			<forward name="success" path="page.adminavisos"/>
+		</action>
+		<action className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+		 		name="AvisoForm" 
+		 		path="/trataaviso" 
+		 		scope="request"
+		 		type="presentation.web.actions.LeeAvisoAction" 
+		 		validate="false">
+			<set-property property="applicationZone" value="portal"/>
+			<forward name="success" path="page.avisos"/>
+		</action>
+		<action className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+		 		name="AvisoForm" 
+		 		path="/actualizaavisos" 
+		 		scope="request"
+		 		type="presentation.web.actions.AvisosUsuarioAction" 
+		 		validate="false">
+			<set-property property="applicationZone" value="portal"/>
+			<forward name="success" path="page.avisos"/>
+		</action>
+
+		<action className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+		 		name="AvisoForm" 
+		 		path="/footerupdate" 
+		 		scope="request"
+		 		type="presentation.web.actions.AvisosUsuarioAction" 
+		 		validate="false">
+			<set-property property="applicationZone" value="portal"/>
+			<forward name="success" path="page.footerupdate"/>
+		</action>
+
+		<action className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+		 		name="RelacionForm" 
+		 		path="/adminrelaciones" 
+		 		scope="request"
+		 		type="presentation.web.actions.RelacionesUsuarioAction" 
+		 		validate="false">
+			<set-property property="applicationZone" value="portal"/>
+			<forward name="success" path="page.adminrelaciones"/>
+		</action>
+		<action className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+		 		name="RelacionForm" 
+		 		path="/relaciones" 
+		 		scope="request"
+		 		type="presentation.web.actions.RelacionesUsuarioAction" 
+		 		validate="false">
+			<set-property property="applicationZone" value="portal"/>
+			<forward name="success" path="page.relacionespersonales"/>
+		</action>
+		<action className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+		 		name="RelacionForm" 
+		 		path="/tratarelacion" 
+		 		scope="request"
+		 		type="presentation.web.actions.TrataRelacionUsuarioAction" 
+		 		validate="false">
+			<set-property property="applicationZone" value="portal"/>
+			<forward name="success" path="/relaciones.do"/>
+		</action>
+		<action className="common.presentation.web.security.actions.mapping.SecurityActionMapping"
+		 		name="SearchForm" 
+		 		path="/buscarelaciones" 
+		 		scope="request"
+		 		type="presentation.web.actions.BuscaRelacionesUsuarioAction" 
+		 		validate="false">
+			<set-property property="applicationZone" value="portal"/>
+			<forward name="success" path="page.buscarelaciones"/>
+		</action>
+	</action-mappings>
+
+	<controller/>
+		
+	<message-resources null="false" parameter="i18n.MessageResources"/>
+	<plug-in className="org.apache.struts.tiles.TilesPlugin">
+		<set-property property="definitions-config" value="/WEB-INF/struts/tiles-defs.xml"/>
+		<set-property property="moduleAware" value="true"/>
+	</plug-in>
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames" value="/WEB-INF/struts/validator-rules.xml,/WEB-INF/struts/validation.xml"/>
+	</plug-in>
+</struts-config>

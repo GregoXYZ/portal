@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="Contenidos" version="2.5"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<display-name>contenidos</display-name>
+	<context-param>
+		<param-name>messages</param-name>
+		<param-value>i18n.MessageResources</param-value>
+	</context-param>
+	<!--
+		*************************** *** Filtros del Sistema ***
+		***************************
+	-->
+	<filter>
+		<description>Registro de visitas (estadisticas)</description>
+		<filter-name>Register Access Page Filter</filter-name>
+		<filter-class>
+			common.presentation.security.filters.RegisterAccesPageFilter</filter-class>
+		<init-param>
+			<param-name>excludedPages</param-name>
+			<param-value>
+   				/error.do,/back.do
+		   </param-value>
+		</init-param>
+	</filter>
+	<filter>
+		<description>Control de acceso</description>
+		<filter-name>Control Access Page Filter</filter-name>
+		<filter-class>
+			common.presentation.security.filters.ControlAccessPageFilter
+		</filter-class>
+		<init-param>
+			<param-name>deleteWhenCaducated</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<init-param>
+			<param-name>excludedUris</param-name>
+			<param-value>
+		  		/error.do,/back.do
+		  	</param-value>
+		</init-param>
+	</filter>
+	<!--
+		************************************* *** Mapeo de URL's de los
+		filtros *** *************************************
+	-->
+	<filter-mapping>
+		<filter-name>Register Access Page Filter</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>Control Access Page Filter</filter-name>
+		<url-pattern>*.do</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>Control Access Page Filter</filter-name>
+		<url-pattern>*.html</url-pattern>
+	</filter-mapping>
+	<listener>
+		<description>Inicializador de aplicacion</description>
+		<listener-class>presentation.util.listener.AppStartup</listener-class>
+	</listener>
+	<servlet>
+		<servlet-name>action</servlet-name>
+		<servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+		<!-- Config general  -->
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>/WEB-INF/struts/struts-config.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>imageResizer</servlet-name>
+		<servlet-class>presentation.util.images.servlets.ImageResizer</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>imageRotate</servlet-name>
+		<servlet-class>presentation.util.images.servlets.RotateImage</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>webImage</servlet-name>
+		<servlet-class>presentation.util.images.servlets.WebThumbnail</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>multimedia</servlet-name>
+		<servlet-class>presentation.util.multimedia.servlets.Multimedia</servlet-class>
+		<load-on-startup>3</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>imageResizer</servlet-name>
+		<url-pattern>/resizer</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>imageRotate</servlet-name>
+		<url-pattern>/rotate</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>webImage</servlet-name>
+		<url-pattern>/webImage</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>multimedia</servlet-name>
+		<url-pattern>/play/*</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	<!-- Control de errores internos de la aplicacion -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error.do</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error.do</location>
+	</error-page>
+	<jsp-config>
+		<taglib>
+			<taglib-uri>/tld/struts-bean</taglib-uri>
+			<taglib-location>/common/tld/struts-bean.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tld/struts-logic</taglib-uri>
+			<taglib-location>/common/tld/struts-logic.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tld/struts-html</taglib-uri>
+			<taglib-location>/common/tld/struts-html.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tld/c</taglib-uri>
+			<taglib-location>/common/tld/c.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tld/fmt</taglib-uri>
+			<taglib-location>/common/tld/fmt.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tld/sql</taglib-uri>
+			<taglib-location>/common/tld/sql.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tld/struts-nested</taglib-uri>
+			<taglib-location>/common/tld/struts-nested.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tld/struts-tiles</taglib-uri>
+			<taglib-location>/common/tld/struts-tiles.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tld/x</taglib-uri>
+			<taglib-location>/common/tld/x.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tld/framework</taglib-uri>
+			<taglib-location>/common/tld/frame.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tld/contenidos</taglib-uri>
+			<taglib-location>/WEB-INF/tld/contenidos.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+	<login-config>
+		<auth-method>BASIC</auth-method>
+	</login-config>
+</web-app>

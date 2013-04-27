@@ -1,0 +1,5 @@
+<!-- Recursos estáticos -->
+<!-- %@ include file="/common/includes/styles.jspf"%-->
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/contenidos.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/newcontent.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/miniaturas.css" media="all"/>

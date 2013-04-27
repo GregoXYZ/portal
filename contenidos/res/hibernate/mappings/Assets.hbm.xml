@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 18-ene-2009 0:32:09 by Hibernate Tools 3.2.4.CR1 -->
+<hibernate-mapping>
+    <class name="business.beans.Assets" table="assets" catalog="contenidos">
+        <id name="assPk" type="java.lang.Long">
+            <column name="ass_pk" />
+            <generator class="identity" />
+        </id>
+        <property name="assNombre" type="string">
+            <column name="ass_nombre" length="256" not-null="true" />
+        </property>
+        <property name="assDescripcion" type="string">
+            <column name="ass_descripcion" length="500" />
+        </property>
+        <property name="tipAssFk" type="java.lang.Long">
+            <column name="tip_ass_fk" not-null="true" />
+        </property>
+        <property name="usuFk" type="java.lang.Long">
+            <column name="usu_fk" not-null="true" />
+        </property>
+        <property name="assFechaAlta" type="java.lang.Long">
+            <column name="ass_fecha_alta" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

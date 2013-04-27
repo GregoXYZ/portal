@@ -1,0 +1,4 @@
+<%-- Tags comunes  --%>
+<%@ include file="/common/includes/tagLibs.jspf"%>
+
+<%@ taglib uri="/tld/contenidos" prefix="cnt"%>

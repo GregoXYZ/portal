@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grid 	name="gridBackEndMenus" 
+		style="tablesorter marco" 
+		title="Listado de menús"
+		showAlertNoData="false" 
+		editable="false">
+
+	<bundle>i18n.grid</bundle>
+
+	<select-key>menPk</select-key>
+
+	<column id="Codigo">
+		<header>Código</header>
+		<reference>menCodigo</reference>
+	</column>
+	<column id="Descripcion">
+		<header>Título</header>
+		<reference>menTitulo</reference>
+	</column>
+	<column id="Descripcion">
+		<header>Descripción</header>
+		<reference>menDescripcion</reference>
+	</column>
+
+	<actions>
+		<row-action name="editMenu" 
+					image="/portal/images/edit.png" >
+			<text>Edita</text>
+			<title>Edita menú</title>
+			<style>action</style>
+			<onClick>onClick</onClick>
+		</row-action>
+		<row-action name="deleteMenu" 
+					image="/portal/images/delete.png" 
+					message="Va eliminar el menú.\n¿Desea continuar?" 
+					confirm="true">
+			<text>Borrar</text>
+			<title>Borrar menú</title>
+			<style>action</style>
+			<param>menPk</param>
+			<formname>deleteMenu</formname>
+		</row-action>
+		<global-action name="newMenu" 
+					   image="/portal/images/add.png" >
+			<text>Nuevo</text>
+			<title>Nuenvo menú</title>
+			<onClick>javascript:ajaxPopup("/portal/backend/editmenu.do")</onClick>
+		</global-action>
+	</actions>
+</grid>

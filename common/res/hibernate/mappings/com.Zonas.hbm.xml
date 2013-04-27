@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 18-dic-2008 19:43:53 by Hibernate Tools 3.2.4.CR1 -->
+<hibernate-mapping>
+    <class name="common.business.beans.Zonas" table="zonas" catalog="system">
+        <id name="zonPk" type="java.lang.Long">
+            <column name="zon_pk" />
+            <generator class="identity" />
+        </id>
+        <property name="zonUkCodigo" type="string">
+            <column name="zon_uk_codigo" length="100" not-null="true" unique="true" />
+        </property>
+        <property name="zonDescripcion" type="string">
+            <column name="zon_descripcion" length="200" not-null="true" />
+        </property>
+        <set name="urlses" inverse="true">
+            <key>
+                <column name="zon_fk" not-null="true" />
+            </key>
+            <one-to-many class="common.business.beans.Urls" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28-feb-2009 13:22:52 by Hibernate Tools 3.2.4.CR1 -->
+<hibernate-mapping>
+ <class catalog="contenidos" name="business.beans.Compartidos" table="compartidos">
+  <id name="comPk" type="java.lang.Long">
+   <column name="com_pk"/>
+   <generator class="identity"/>
+  </id>
+  <property generated="never" lazy="false" name="assFk" type="java.lang.Long">
+   <column name="ass_fk" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="usuFk" type="java.lang.Long">
+   <column name="usu_fk" not-null="true"/>
+  </property>
+  <property name="comFechaAlta" type="java.lang.Long">
+      <column name="com_fecha_alta" not-null="true" />
+  </property>
+ </class>
+</hibernate-mapping>

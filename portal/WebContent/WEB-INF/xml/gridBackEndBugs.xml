@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grid 	name="gridBackEndBugs" 
+		style="tablesorter marco" 
+		title="Bugger"
+		showAlertNoData="false" 
+		editable="false">
+
+	<bundle>i18n.grid</bundle>
+
+	<column id="Id">
+		<header>Id</header>
+		<reference>bugPk</reference>
+		<icon>bugIcon</icon>
+	</column>
+	<column id="Prioridad">
+		<header>Prioridad</header>
+		<reference>bugPriUkCodigo</reference>
+		<style>style</style>
+	</column>
+	<column id="Estado">
+		<header>Estado</header>
+		<reference>bugEstUkCodigo</reference>
+	</column>
+	<column id="Zona">
+		<header>Zona</header>
+		<reference>bugSite</reference>
+	</column>
+	<column id="Mensaje">
+		<header>mensaje de error</header>
+		<reference>bugMessage</reference>
+	</column>
+	<column id="Descripcion">
+		<header>Descripción</header>
+		<reference>bugDescripcion</reference>
+	</column>
+
+	<actions>
+		<row-action name="editBug" 
+					image="/portal/images/edit.png" >
+			<text>Edita</text>
+			<title>Edita bug</title>
+			<style>action</style>
+			<onClick>onClick</onClick>
+		</row-action>
+		<row-action name="deleteBug" 
+					image="/portal/images/delete.png" 
+					message="Va eliminar el bug.\n¿Desea continuar?" 
+					confirm="true">
+			<text>Borrar</text>
+			<title>Borrar bug</title>
+			<style>action</style>
+			<param>bugPk</param>
+			<formname>deleteBug</formname>
+		</row-action>
+	</actions>
+</grid>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28-feb-2009 20:08:00 by Hibernate Tools 3.2.4.CR1 -->
+<hibernate-mapping>
+    <class name="common.business.beans.Avisos" table="avisos" catalog="system">
+        <id name="aviPk" type="java.lang.Long">
+            <column name="avi_pk" />
+            <generator class="identity" />
+        </id>
+        <property name="aviFLeido" type="java.lang.Long">
+            <column name="avi_f_leido" />
+        </property>
+        <property name="usuFkOrigen" type="java.lang.Long">
+            <column name="usu_fk_origen" />
+        </property>
+        <property name="usuFkDestino" type="java.lang.Long">
+            <column name="usu_fk_destino" not-null="true" />
+        </property>
+        <property name="aviFEnvio" type="java.lang.Long">
+            <column name="avi_f_envio" not-null="true" />
+        </property>
+        <property name="tipAviFk" type="integer">
+            <column name="tip_avi_fk" not-null="true" />
+        </property>
+        <property name="aviReferencia" type="java.lang.Long">
+            <column name="avi_referencia" />
+        </property>
+        <property name="aviCantidad" type="integer">
+            <column name="avi_cantidad" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

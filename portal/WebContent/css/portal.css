@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+
+#general .pagina {
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.obligatorio {
+	font-family: cursive;
+}
+
+#register {
+	padding-bottom: 5px;
+}
+
+.fix-content {
+	width: 900px;
+}
+
+#sidebar {
+	margin:0 0 0 15px;
+	width:300px;
+}
+
+#statusbar {
+	width: 585px;
+}

@@ -1,0 +1,271 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17-dic-2008 22:46:15 by Hibernate Tools 3.2.4.CR1 -->
+<hibernate-mapping>
+ 
+ <sql-query name="MenusDAO.findCap">
+ 	<return alias="r" class="common.business.beans.Menus"/>
+	<!-- return-scalar column="men_pk" type="java.lang.Long"/>
+	<return-scalar column="men_fk" type="java.lang.Long"/>
+	<return-scalar column="men_uk_codigo" type="string"/>
+	<return-scalar column="men_descripcion" type="string"/>
+	<return-scalar column="men_titulo" type="string"/>
+	<return-scalar column="men_icon" type="string"/>
+	<return-scalar column="url_fk" type="java.lang.Long"/>
+	<return-scalar column="men_popup" type="character"/ -->
+   	<![CDATA[     
+		select  m.*
+		from    system.menus m
+		where   m.men_fk is null 
+		  and   exists (
+		                select  '1'
+		                from    system.grupos gr,
+		                        system.usuarios_grupos ug,
+		                        system.grupos_menus gm
+		                where   ug.usu_fk = :user 
+		                  and   ug.gru_fk = gr.gru_pk
+		                  and   gm.gru_fk = gr.gru_pk 
+		                  and   gm.men_fk = m.men_pk 
+		                )   
+		order by m.men_orden
+		]]>
+ </sql-query>
+ 
+ <sql-query name="MenusDAO.findMenu">
+ 	<return alias="r" class="common.business.beans.Menus"/>
+	<!-- return-scalar column="men_pk" type="java.lang.Long"/>
+	<return-scalar column="men_fk" type="java.lang.Long"/>
+	<return-scalar column="men_uk_codigo" type="string"/>
+	<return-scalar column="men_descripcion" type="string"/>
+	<return-scalar column="men_titulo" type="string"/>
+	<return-scalar column="men_icon" type="string"/>
+	<return-scalar column="url_fk" type="java.lang.Long"/>
+	<return-scalar column="men_popup" type="character"/ -->
+   	<![CDATA[     
+		select  m.*
+		from    system.menus m
+		where   m.men_fk = :parent 
+		  and   exists (
+		                select  '1'
+		                from    system.grupos gr,
+		                        system.usuarios_grupos ug,
+		                        system.grupos_menus gm
+		                where   ug.usu_fk = :user 
+		                  and   ug.gru_fk = gr.gru_pk
+		                  and   gm.gru_fk = gr.gru_pk 
+		                  and   gm.men_fk = m.men_pk 
+		                )   
+		order by m.men_orden
+		]]>
+ </sql-query>
+ <sql-query name="ZonasDAO.userZones">
+ 	<!-- <return alias="r" class="common.business.beans.Menus"/> -->
+	<return-scalar column="zon_pk" type="java.lang.Long"/>
+	<return-scalar column="zon_uk_codigo" type="string"/>
+   	<![CDATA[   
+		   	select 	zo.zon_pk   AS zon_pk,
+		  			zo.zon_uk_codigo AS zon_uk_codigo
+			from	system.zonas zo
+			where 	exists (select '1'
+							from system.usuarios us,
+								system.grupos gr ,
+								system.usuarios_grupos ug ,
+								system.urls_grupos ur ,
+								system.urls u
+							where 
+								ug.usu_fk 	= us.usu_pk
+							and ug.gru_fk   = gr.gru_pk
+							and ur.gru_fk   = gr.gru_pk
+							and ur.url_fk   = u.url_pk
+							and zo.zon_pk   = u.zon_fk
+							and us.usu_pk 	= :user)
+		]]>
+ </sql-query>
+ <sql-query name="UrlsDAO.userUrls">
+	<return-scalar column="url_pk" type="java.lang.Long"/>
+	<return-scalar column="url_uk_codigo" type="string"/>
+   	<![CDATA[     
+		   	select 	u.url_pk,
+		 			u.url_uk_codigo
+			from	system.urls u
+			where 	u.zon_fk = :zona and
+					exists (select '1'
+							from system.usuarios us,
+								system.grupos gr ,
+								system.usuarios_grupos ug ,
+								system.urls_grupos ur
+					where 
+						ug.usu_fk 	= us.usu_pk
+					and ug.gru_fk   = gr.gru_pk
+					and ur.gru_fk   = gr.gru_pk
+					and ur.url_fk   = u.url_pk
+					and us.usu_pk 	= :user)
+		]]>
+ </sql-query>
+ 
+ <sql-query name="Usuarios.relacionesUsuarios">
+ 	<return alias="r" class="common.business.beans.Usuarios"/>
+   	<![CDATA[     
+		SELECT 	u.usu_pk, 
+				u.usu_uk_codigo, 
+				u.usu_nombre, 
+				u.usu_apellido1, 
+				u.usu_apellido2,
+				null as usu_contrasena,
+				u.usu_fecha_baja,
+				u.usu_mail,
+				u.usu_avatar,
+				u.usu_activo,
+				u.usu_publicable,
+				u.usu_recibe_aviso 
+		FROM 	system.usuarios_activos_view u
+		WHERE	u.usu_pk != :user AND
+			EXISTS (
+				SELECT 	'1' 
+				FROM 	system.relaciones_usuarios r
+				WHERE	(r.usu_1_fk = :user OR r.usu_2_fk = :user) AND
+						(u.usu_pk = r.usu_1_fk OR u.usu_pk = r.usu_2_fk) AND
+						r.est_rel_usu_fk in (1, 2)
+				)
+		ORDER BY u.usu_nombre, 
+				u.usu_apellido1, 
+				u.usu_apellido2
+		]]>
+ </sql-query>
+ 
+ <sql-query name="Bugs.listado">
+	<return-scalar column="bug_pk" type="java.lang.Long"/>
+	<return-scalar column="bug_message" type="string"/>
+	<return-scalar column="bug_descripcion" type="string"/>
+	<return-scalar column="bug_fecha_report" type="java.lang.Long"/>
+	<return-scalar column="usu_pk" type="java.lang.Long"/>
+	<return-scalar column="usu_uk_codigo" type="string"/>
+	<return-scalar column="usu_nombre" type="string"/>
+	<return-scalar column="usu_apellido1" type="string"/>
+	<return-scalar column="usu_apellido2" type="string"/>
+	<return-scalar column="zon_pk" type="java.lang.Long"/>
+	<return-scalar column="zon_uk_codigo" type="string"/>
+	<return-scalar column="zon_descripcion" type="string"/>
+	<return-scalar column="bug_est_pk" type="java.lang.Long"/>
+	<return-scalar column="bug_est_uk_codigo" type="string"/>
+	<return-scalar column="bug_pri_pk" type="java.lang.Long"/>
+	<return-scalar column="bug_pri_uk_codigo" type="string"/>
+   	<![CDATA[     
+		(SELECT b.bug_pk, 
+				b.bug_message, 
+				b.bug_descripcion, 
+				b.bug_fecha_report, 
+				u.usu_pk,
+				u.usu_uk_codigo, 
+				u.usu_nombre, 
+				u.usu_apellido1, 
+				u.usu_apellido2, 
+				z.zon_pk, 
+				z.zon_uk_codigo, 
+				z.zon_descripcion, 
+				e.bug_est_pk, 
+				e.bug_est_uk_codigo, 
+				p.bug_pri_pk, 
+				p.bug_pri_uk_codigo 	
+		FROM 	system.bugs b, 
+				system.zonas z, 
+				system.bug_estados e, 
+				system.bug_prioridades p,
+				system.usuarios u
+		WHERE	z.zon_pk = b.bug_site AND
+				e.bug_est_pk = b.bug_est_fk AND
+				p.bug_pri_pk = b.bug_pri_fk AND
+				u.usu_pk = b.usu_fk AND 
+				e.bug_est_pk > 1
+		ORDER BY p.bug_pri_pk, b.bug_fecha_report)
+		UNION
+		(SELECT b.bug_pk, 
+				b.bug_message, 
+				b.bug_descripcion, 
+				b.bug_fecha_report, 
+				u.usu_pk,
+				u.usu_uk_codigo, 
+				u.usu_nombre, 
+				u.usu_apellido1, 
+				u.usu_apellido2, 
+				z.zon_pk, 
+				z.zon_uk_codigo, 
+				z.zon_descripcion, 
+				e.bug_est_pk, 
+				e.bug_est_uk_codigo, 
+				p.bug_pri_pk, 
+				p.bug_pri_uk_codigo 	
+		FROM 	system.bugs b, 
+				system.zonas z, 
+				system.bug_estados e, 
+				system.bug_prioridades p,
+				system.usuarios u
+		WHERE	z.zon_pk = b.bug_site AND
+				e.bug_est_pk = b.bug_est_fk AND
+				p.bug_pri_pk = b.bug_pri_fk AND
+				u.usu_pk = b.usu_fk AND 
+				e.bug_est_pk = 1
+		ORDER BY p.bug_pri_pk, b.bug_fecha_report)
+		]]>
+ </sql-query>
+ 
+ <sql-query name="Mails.pendientes">
+	<return-scalar column="usu_fk_origen" type="java.lang.Long"/>
+	<return-scalar column="usu_from" type="string"/>
+	<return-scalar column="usu_fk_destino" type="java.lang.Long"/>
+	<return-scalar column="usu_to" type="string"/>
+	<return-scalar column="tip_avi_fk" type="integer"/>
+	<return-scalar column="cantidad" type="java.lang.Long"/>
+   	<![CDATA[     
+		SELECT	a.usu_fk_origen,
+				uo.usu_mail usu_from,
+				a.usu_fk_destino,
+				ud.usu_mail usu_to,
+				a.tip_avi_fk,
+				sum(avi_cantidad) cantidad
+		FROM 	system.mails m,
+				system.avisos a,
+				system.usuarios uo,
+				system.usuarios ud
+		WHERE	a.avi_pk = m.avi_fk
+		AND		uo.usu_pk = a.usu_fk_origen
+		AND		ud.usu_pk = a.usu_fk_destino
+		AND		m.mai_fecha_envio IS null
+		GROUP BY a.usu_fk_origen,
+				a.usu_fk_destino,
+				a.tip_avi_fk;
+		]]>
+ </sql-query> 
+ 
+ <sql-query name="Usuarios.enLinea">
+	<return-scalar column="usu_pk" type="java.lang.Long"/>
+	<return-scalar column="usu_uk_codigo" type="string"/>
+	<return-scalar column="usu_nombre" type="string"/>
+	<return-scalar column="usu_apellido1" type="string"/>
+	<return-scalar column="usu_apellido2" type="string"/>
+	<return-scalar column="last_accessed_time" type="java.lang.Long"/>
+   	<![CDATA[     
+		SELECT 	u.usu_pk, 
+				u.usu_uk_codigo,
+				u.usu_nombre,
+				u.usu_apellido1,
+				u.usu_apellido2,
+				s.last_accessed_time 
+		FROM 	usuarios u,
+				system.sessions s
+		WHERE 	u.usu_pk = s.user_id
+		AND 	u.usu_pk != :user
+		AND 	(u.usu_fecha_baja = null OR u.usu_fecha_baja > :time)
+		AND 	u.usu_activo = 'S'
+		AND		s.valid_session = 'S'
+		AND 	EXISTS (SELECT 	'1' 
+						FROM 	system.relaciones_usuarios r
+						WHERE	(r.usu_1_fk = :user OR r.usu_2_fk = :user)
+						AND		(u.usu_pk = r.usu_1_fk OR u.usu_pk = r.usu_2_fk) 
+						AND		r.est_rel_usu_fk = 2
+				)
+		]]>
+ </sql-query> 
+
+</hibernate-mapping>

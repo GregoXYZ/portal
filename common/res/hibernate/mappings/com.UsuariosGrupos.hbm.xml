@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17-dic-2008 22:46:15 by Hibernate Tools 3.2.4.CR1 -->
+<hibernate-mapping>
+    <class name="common.business.beans.UsuariosGrupos" table="usuarios_grupos" catalog="system">
+        <composite-id name="id" class="common.business.beans.UsuariosGruposId">
+            <key-property name="usuFk" type="java.lang.Long">
+                <column name="usu_fk" />
+            </key-property>
+            <key-property name="gruFk" type="java.lang.Long">
+                <column name="gru_fk" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="grupos" class="common.business.beans.Grupos" update="false" insert="false" fetch="select">
+            <column name="gru_fk" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuarios" class="common.business.beans.Usuarios" update="false" insert="false" fetch="select">
+            <column name="usu_fk" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

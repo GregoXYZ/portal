@@ -1,0 +1,4 @@
+https://socialfiles.dnsalias.net:8443/index.html
+https://socialfiles.dnsalias.net:8443/portal/home.do
+https://socialfiles.dnsalias.net:8443/contenidos/home.do
+https://socialfiles.dnsalias.net:8443/foros/home.do

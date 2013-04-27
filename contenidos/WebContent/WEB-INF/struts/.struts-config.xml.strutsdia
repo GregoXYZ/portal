@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="StrutsProcess">
+ <PROCESS-ITEM ID="webError" NAME="forward0" PATH="/error.do"
+  SHAPE="32,17,0,0" TARGET="action0" TITLE="webError" TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="errorNoControlado" NAME="forward1" PATH="/error.do"
+  SHAPE="32,129,0,0" TARGET="action0" TITLE="errorNoControlado"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="java.lang.Exception" NAME="exception0"
+  SHAPE="456,432,91,21" TITLE="Exception" TYPE="exception" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#home" NAME="action9" PATH="/home"
+  SHAPE="608,288,131,41" TITLE="ContenidosForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0" PATH="page.home"
+   TARGET="page5" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#empty" NAME="action10" PATH="/empty"
+  SHAPE="32,560,101,41" SUBTYPE="forward" TITLE="EmptyForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="action10" PATH="page.empty" TARGET="page7"
+   TITLE="forward" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page0" PATH="page.error" SHAPE="696,72,50,25"
+  SUBTYPE="tile" TITLE="page.error" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page7" PATH="page.empty" SHAPE="240,576,50,25"
+  SUBTYPE="tile" TITLE="page.empty" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#error" NAME="action0" PATH="/error"
+  SHAPE="296,56,100,41" TITLE="EmptyForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0" PATH="page.error"
+   TARGET="page0" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#back" NAME="action1" PATH="/back"
+  SHAPE="456,528,101,25" TITLE="EmptyForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#openfile" NAME="action6" PATH="/openfile"
+  SHAPE="32,208,131,41" TITLE="FileForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="error" NAME="forward0" PATH="/home.do"
+   TARGET="action9" TITLE="error" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#newfolder" NAME="action7" PATH="/newfolder"
+  SHAPE="32,624,102,41" SUBTYPE="forward" TITLE="FolderForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="action7" PATH="page.newfolder"
+   TARGET="page3" TITLE="forward" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page3" PATH="page.newfolder" SHAPE="272,632,50,25"
+  SUBTYPE="tile" TITLE="page.newfolder" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#newfile" NAME="action8" PATH="/newfile"
+  SHAPE="56,720,100,41" TITLE="FileForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0" PATH="page.newfile"
+   TARGET="page4" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#uploadFile" NAME="action11" PATH="/uploadFile"
+  SHAPE="32,432,100,41" TITLE="FileForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="error" NAME="forward0" PATH="/error.do"
+   TARGET="action0" TITLE="error" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward1" PATH="/home.do"
+   TARGET="action9" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#createfolder" NAME="action12" PATH="/createfolder"
+  SHAPE="32,496,102,41" TITLE="FolderForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0" PATH="/home.do"
+   TARGET="action9" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="noBrowser" NAME="forward3" PATH="/nobrowser.do"
+  SHAPE="32,945,0,0" TARGET="action13" TITLE="noBrowser" TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page4" PATH="page.newfile" SHAPE="448,816,0,0"
+  SUBTYPE="tile" TITLE="page.newfile" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#nobrowser" NAME="action13" PATH="/nobrowser"
+  SHAPE="240,1169,0,0" SUBTYPE="forward" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="action13" PATH="page.nobrowser"
+   TARGET="page6" TITLE="forward" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page6" PATH="page.nobrowser" SHAPE="448,1169,0,0"
+  SUBTYPE="tile" TITLE="page.nobrowser" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#deleteasset" NAME="action4" PATH="/deleteasset"
+  SHAPE="240,257,0,0" TITLE="ContenidosForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0" PATH="/home.do"
+   TARGET="action9" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#editcuota" NAME="action5" PATH="/editcuota"
+  SHAPE="704,257,0,0" TITLE="CuotaForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0"
+   PATH="page.editcuota" TARGET="page8" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page8" PATH="page.editcuota" SHAPE="912,369,0,0"
+  SUBTYPE="tile" TITLE="page.editcuota" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#saveCuota" NAME="action14" PATH="/saveCuota"
+  SHAPE="656,1265,0,0" TITLE="CuotaForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0" PATH="/editcuota.do"
+   TARGET="action5" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#mimefilelist" NAME="action15" PATH="/mimefilelist"
+  SHAPE="256,1377,0,0" TITLE="MimeFileForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0"
+   PATH="page.mimefilelist" TARGET="page9" TITLE="success"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page9" PATH="page.mimefilelist"
+  SHAPE="464,1362,0,0" SUBTYPE="tile" TITLE="page.mimefilelist"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#deletemimefile" NAME="action16"
+  PATH="/deletemimefile" SHAPE="32,1361,0,0" TITLE="MimeFileForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0"
+   PATH="/mimefilelist.do" TARGET="action15" TITLE="success"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#editmimefile" NAME="action17" PATH="/editmimefile"
+  SHAPE="32,1585,0,0" TITLE="MimeFileForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0"
+   PATH="page.editmimefile" TARGET="page10" TITLE="success"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page10" PATH="page.editmimefile"
+  SHAPE="240,1602,0,0" SUBTYPE="tile" TITLE="page.editmimefile"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#savemimefile" NAME="action18" PATH="/savemimefile"
+  SHAPE="32,1473,0,0" TITLE="MimeFileForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0"
+   PATH="/mimefilelist.do" TARGET="action15" TITLE="success"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#procesando" NAME="action19" PATH="/procesando"
+  SHAPE="32,1697,0,0" SUBTYPE="forward" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="action19" PATH="page.procesando"
+   TARGET="page11" TITLE="forward" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page11" PATH="page.procesando" SHAPE="240,1714,0,0"
+  SUBTYPE="tile" TITLE="page.procesando" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#fileproperties" NAME="action20"
+  PATH="/fileproperties" SHAPE="240,369,0,0" TITLE="UpdateFileForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0"
+   PATH="page.updatefile" TARGET="page13" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#updatefile" NAME="action21" PATH="/updatefile"
+  SHAPE="240,481,0,0" TITLE="UpdateFileForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0" PATH="/home.do"
+   TARGET="action9" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page13" PATH="page.updatefile" SHAPE="448,593,0,0"
+  SUBTYPE="tile" TITLE="page.updatefile" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#compartidos" NAME="action22" PATH="/compartidos"
+  SHAPE="48,800,144,41" TITLE="CompartidosForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0"
+   PATH="page.compartidos" TARGET="page12" TITLE="success"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page12" PATH="page.compartidos" SHAPE="448,929,0,0"
+  SUBTYPE="tile" TITLE="page.compartidos" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#opensharedfile" NAME="action24"
+  PATH="/opensharedfile" SHAPE="288,992,144,41" TITLE="CompartidosForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="error" NAME="forward0" PATH="/compartidos.do"
+   TARGET="action22" TITLE="error" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#borracompartido" NAME="action25"
+  PATH="/borracompartido" SHAPE="32,1137,0,0" TITLE="CompartidosForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0"
+   PATH="/compartidos.do" TARGET="action22" TITLE="success"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#userinfo" NAME="action2" PATH="/userinfo"
+  SHAPE="24,1232,103,41" TITLE="CuotaForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0" PATH="page.userinfo"
+   TARGET="page15" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page15" PATH="page.userinfo" SHAPE="240,1266,0,0"
+  SUBTYPE="tile" TITLE="page.userinfo" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#folderproperties" NAME="action3"
+  PATH="/folderproperties" SHAPE="240,1825,0,0" TITLE="FolderForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0"
+   PATH="page.updatefolder" TARGET="page16" TITLE="success"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page16" PATH="page.updatefolder"
+  SHAPE="448,1825,0,0" SUBTYPE="tile" TITLE="page.updatefolder"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#updatefolder" NAME="action23" PATH="/updatefolder"
+  SHAPE="240,1489,0,0" TITLE="FolderForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0" PATH="/home.do"
+   TARGET="action9" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page1" PATH="page.imagesminiatures"
+  SHAPE="656,705,0,0" SUBTYPE="tile" TITLE="page.imagesminiatures"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#showMiniatures" NAME="action27"
+  PATH="/showMiniatures" SHAPE="40,888,136,41" TITLE="ContenidosForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0"
+   PATH="page.popupimagesminiatures" TARGET="page2" TITLE="success"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page2" PATH="page.popupimagesminiatures"
+  SHAPE="240,1938,0,0" SUBTYPE="tile" TITLE="page.popupimagesminiatures"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#sharedMiniatures" NAME="action28"
+  PATH="/sharedMiniatures" SHAPE="32,1953,0,0" TITLE="CompartidosForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0"
+   PATH="page.popupimagesminiatures" TARGET="page2" TITLE="success"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#expose" NAME="action26" PATH="/expose"
+  SHAPE="32,2065,0,0" TITLE="ContenidosForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0"
+   PATH="page.imagesminiatures" TARGET="page1" TITLE="success"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#carrousel" NAME="action30" PATH="/carrousel"
+  SHAPE="32,2289,0,0" TITLE="ContenidosForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0"
+   PATH="page.carrousel" TARGET="page19" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page19" PATH="page.carrousel" SHAPE="240,2306,0,0"
+  SUBTYPE="tile" TITLE="page.carrousel" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#exposeshared" NAME="action29" PATH="/exposeshared"
+  SHAPE="448,1953,0,0" TITLE="CompartidosForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0"
+   PATH="page.imagesminiatures" TARGET="page1" TITLE="success"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#carrouselshared" NAME="action31"
+  PATH="/carrouselshared" SHAPE="32,2401,0,0" TITLE="CompartidosForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0"
+   PATH="page.carrousel" TARGET="page19" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#updatesharedfile" NAME="action32"
+  PATH="/updatesharedfile" SHAPE="704,800,134,41" TITLE="UpdateFileForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0"
+   PATH="/compartidos.do" TARGET="action22" TITLE="success"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#sharedfileproperties" NAME="action33"
+  PATH="/sharedfileproperties" SHAPE="240,2081,0,0"
+  TITLE="UpdateFileForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0"
+   PATH="page.updatesharedfile" TARGET="page14" TITLE="success"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page14" PATH="page.updatesharedfile"
+  SHAPE="448,2193,0,0" SUBTYPE="tile" TITLE="page.updatesharedfile"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#fileinfo" NAME="action34" PATH="/fileinfo"
+  SHAPE="240,1073,0,0" TITLE="AssetInfoForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0" PATH="page.fileinfo"
+   TARGET="page18" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="error" NAME="forward1" PATH="/empty"
+   TARGET="action10" TITLE="error" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page18" PATH="page.fileinfo" SHAPE="448,1297,0,0"
+  SUBTYPE="tile" TITLE="page.fileinfo" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#openfiles" NAME="action35" PATH="/openfiles"
+  SHAPE="32,2321,0,0" TITLE="ContenidosForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0" PATH="page.files"
+   TARGET="page23" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#openfolder" NAME="action36" PATH="/openfolder"
+  SHAPE="32,2657,0,0" TITLE="ContenidosForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0" PATH="page.folders"
+   TARGET="page21" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#ruta" NAME="action38" PATH="/ruta"
+  SHAPE="32,2545,0,0" TITLE="ContenidosForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0" PATH="page.ruta"
+   TARGET="page22" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page22" PATH="page.ruta" SHAPE="240,2769,0,0"
+  SUBTYPE="tile" TITLE="page.ruta" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page21" PATH="page.folders" SHAPE="448,2657,0,0"
+  SUBTYPE="tile" TITLE="page.folders" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page23" PATH="page.files" SHAPE="240,2433,0,0"
+  SUBTYPE="tile" TITLE="page.files" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#opensharedfiles" NAME="action37"
+  PATH="/opensharedfiles" SHAPE="32,2769,0,0" TITLE="CompartidosForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0"
+   PATH="page.ficheroscompartidos" TARGET="page17" TITLE="success"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page17" PATH="page.ficheroscompartidos"
+  SHAPE="240,2881,0,0" SUBTYPE="tile" TITLE="page.ficheroscompartidos"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page5" PATH="page.home" SHAPE="816,288,0,0"
+  SUBTYPE="tile" TITLE="page.home" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#infoweb" NAME="action39" PATH="/infoweb"
+  SHAPE="32,2993,0,0" SUBTYPE="forward" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="action39" PATH="page.infoweb"
+   TARGET="page20" TITLE="forward" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page20" PATH="page.infoweb" SHAPE="240,3010,0,0"
+  SUBTYPE="tile" TITLE="page.infoweb" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#uploadinfo" NAME="action40" PATH="/uploadinfo"
+  SHAPE="32,3105,0,0" SUBTYPE="forward" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="action40" PATH="page.uploadinfo"
+   TARGET="page24" TITLE="forward" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#showMultimedia" NAME="action41"
+  PATH="/showMultimedia" SHAPE="32,3217,0,0" TITLE="ContenidosForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0"
+   PATH="page.popupmultimedia" TARGET="page25" TITLE="success"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page24" PATH="page.uploadinfo" SHAPE="240,3122,0,0"
+  SUBTYPE="tile" TITLE="page.uploadinfo" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page25" PATH="page.popupmultimedia"
+  SHAPE="240,3234,0,0" SUBTYPE="tile" TITLE="page.popupmultimedia"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#buscador" NAME="action42" PATH="/buscador"
+  SHAPE="32,3329,0,0" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0" PATH="page.buscador"
+   TARGET="page26" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page26" PATH="page.buscador" SHAPE="240,3346,0,0"
+  SUBTYPE="tile" TITLE="page.buscador" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#openlinks" NAME="action43" PATH="/openlinks"
+  SHAPE="32,2881,0,0" TITLE="ContenidosForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0" PATH="page.links"
+   TARGET="page27" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page27" PATH="page.links" SHAPE="448,2881,0,0"
+  SUBTYPE="tile" TITLE="page.links" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#preview" NAME="action44" PATH="/preview"
+  SHAPE="32,3441,0,0" TITLE="AssetInfoForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0" PATH="page.preview"
+   TARGET="page28" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page28" PATH="page.preview" SHAPE="240,3553,0,0"
+  SUBTYPE="tile" TITLE="page.preview" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#selectionfiles" NAME="action45"
+  PATH="/selectionfiles" SHAPE="240,2225,0,0" TITLE="SelectionFilesForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0"
+   PATH="page.selectionfiles" TARGET="page29" TITLE="success"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page29" PATH="page.selectionfiles"
+  SHAPE="448,2337,0,0" SUBTYPE="tile" TITLE="page.selectionfiles"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#sharefiles" NAME="action46" PATH="/sharefiles"
+  SHAPE="240,3681,0,0" TITLE="SelectionFilesForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0" PATH="/home.do"
+   TARGET="action9" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#sharedMultimedia" NAME="action47"
+  PATH="/sharedMultimedia" SHAPE="32,3553,0,0" TITLE="CompartidosForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0"
+   PATH="page.popupmultimedia" TARGET="page25" TITLE="success"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page30" PATH="page.updatetags" SHAPE="480,1073,0,0"
+  SUBTYPE="tile" TITLE="page.updatetags" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#loadtags" NAME="action48" PATH="/loadtags"
+  SHAPE="240,2561,0,0" TITLE="TagForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0"
+   PATH="page.updatetags" TARGET="page30" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#deletetag" NAME="action49" PATH="/deletetag"
+  SHAPE="240,2673,0,0" TITLE="TagForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0" PATH="/loadtags.do"
+   TARGET="action48" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#loadlinks" NAME="action50" PATH="/loadlinks"
+  SHAPE="240,3457,0,0" TITLE="LinkForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0" PATH="page.links"
+   TARGET="page27" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#adminlinks" NAME="action51" PATH="/adminlinks"
+  SHAPE="240,3793,0,0" TITLE="LinkForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0"
+   PATH="page.adminlinks" TARGET="page31" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page31" PATH="page.adminlinks" SHAPE="448,3793,0,0"
+  SUBTYPE="tile" TITLE="page.adminlinks" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#savelinks" NAME="action52" PATH="/savelinks"
+  SHAPE="32,3665,0,0" TITLE="LinkForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0" PATH="/loadlinks.do"
+   TARGET="action50" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#createlink" NAME="action53" PATH="/createlink"
+  SHAPE="32,3777,0,0" TITLE="LinkForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0" PATH="/loadlinks.do"
+   TARGET="action50" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#nube" NAME="action54" PATH="/nube"
+  SHAPE="32,3889,0,0" TITLE="TagForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0" PATH="page.nube"
+   TARGET="page32" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page32" PATH="page.nube" SHAPE="240,3906,0,0"
+  SUBTYPE="tile" TITLE="page.nube" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#buscatag" NAME="action55" PATH="/buscatag"
+  SHAPE="32,4001,0,0" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0" PATH="page.files"
+   TARGET="page23" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page33" PATH="page.buscado" SHAPE="240,4113,0,0"
+  SUBTYPE="tile" TITLE="page.buscado" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#buscarcontenido" NAME="action56"
+  PATH="/buscarcontenido" SHAPE="32,4113,0,0" TITLE="SearchForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0" PATH="page.files"
+   TARGET="page23" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+</PROCESS>

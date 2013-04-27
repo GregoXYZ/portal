@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 20-mar-2009 18:35:21 by Hibernate Tools 3.2.4.GA -->
+<hibernate-mapping>
+    <class name="common.business.beans.BugPrioridades" table="bug_prioridades" catalog="system">
+        <id name="bugPriPk" type="java.lang.Integer">
+            <column name="bug_pri_pk" />
+            <generator class="identity" />
+        </id>
+        <property name="bugPriUkCodigo" type="string">
+            <column name="bug_pri_uk_codigo" length="25" not-null="true" unique="true" />
+        </property>
+    </class>
+</hibernate-mapping>

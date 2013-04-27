@@ -1,0 +1,15 @@
+@CHARSET "UTF-8";
+
+#newmessage {
+	margin-top: -200px;
+	margin-left: -325px;
+	width: 650px;
+	height: 400px;
+}
+
+#invitaciones {
+	margin-top: -150px;
+	margin-left: -200px;
+	width: 400px;
+	height: 300px;
+}

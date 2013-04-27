@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 01-may-2009 12:30:10 by Hibernate Tools 3.2.4.GA -->
+<hibernate-mapping>
+    <class name="business.beans.Parametros" table="parametros" catalog="foros">
+        <id name="parPk" type="string">
+            <column name="par_pk" length="50" />
+            <generator class="assigned" />
+        </id>
+        <property name="parValor" type="string">
+            <column name="par_valor" length="500" not-null="true" />
+        </property>
+        <property name="parDescripcion" type="string">
+            <column name="par_descripcion" length="2000" />
+        </property>
+    </class>
+</hibernate-mapping>

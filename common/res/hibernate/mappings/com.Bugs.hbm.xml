@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 09-feb-2009 23:05:40 by Hibernate Tools 3.2.4.CR1 -->
+<hibernate-mapping>
+    <class name="common.business.beans.Bugs" table="bugs" catalog="system">
+        <id name="bugPk" type="java.lang.Long">
+            <column name="bug_pk" />
+            <generator class="identity" />
+        </id>
+        <property name="bugSite" type="java.lang.Long">
+            <column name="bug_site" />
+        </property>
+        <property name="bugMessage" type="string">
+            <column name="bug_message" length="250" />
+        </property>
+        <property name="bugDescripcion" type="string">
+            <column name="bug_descripcion" length="250" />
+        </property>
+        <property name="usuFk" type="java.lang.Long">
+            <column name="usu_fk" not-null="true" />
+        </property>
+        <property name="bugFechaReport" type="java.lang.Long">
+            <column name="bug_fecha_report" not-null="true" />
+        </property>
+        <property name="bugEstFk" type="java.lang.Long">
+            <column name="bug_est_fk" not-null="true" />
+        </property>
+        <property name="bugPriFk" type="java.lang.Long">
+            <column name="bug_pri_fk" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

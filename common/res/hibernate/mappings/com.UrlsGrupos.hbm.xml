@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 18-dic-2008 19:43:53 by Hibernate Tools 3.2.4.CR1 -->
+<hibernate-mapping>
+    <class name="common.business.beans.UrlsGrupos" table="urls_grupos" catalog="system">
+        <composite-id name="id" class="common.business.beans.UrlsGruposId">
+            <key-property name="urlFk" type="java.lang.Long">
+                <column name="url_fk" />
+            </key-property>
+            <key-property name="gruFk" type="java.lang.Long">
+                <column name="gru_fk" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="urls" class="common.business.beans.Urls" update="false" insert="false" fetch="select">
+            <column name="url_fk" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

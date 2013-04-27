@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grid 	name="gridAssets" 
+		style="orderfiles tablesorter" 
+		title="Ficheros"
+		showAlertNoData="false" 
+		editable="false">
+
+	<bundle>i18n.grid</bundle>
+
+	<with-header>true</with-header>
+	<with-footer>false</with-footer>
+
+	<showRowNums>true</showRowNums>
+
+	<rowId>assPk</rowId>
+
+	<column id="Nombre">
+		<header>Nombre</header>
+		<reference>assNombre</reference>
+		<icon>icon</icon>
+		<action name="download" 
+				param="assPk" 
+				formname="download" 
+				onMouseOver="onMouseOver"
+				onClick="onClick">
+		</action>
+	</column>
+	<column id="Descripcion">
+		<header>Descripción</header>
+		<reference>assDescripcion</reference>
+	</column>	
+	<column id="Tipo">
+		<header>Tipo</header>
+		<reference>mimFilExtension</reference>
+	</column>
+	<column id="Tamño">
+		<header>Tamaño</header>
+		<reference>ficSize</reference>
+	</column>
+	<!-- 
+	<column id="Comparten">
+		<header>Comparten</header>
+		<reference>usersComparten</reference>
+	</column>
+	 -->
+
+	<actions>
+		<row-action name="updateFile" 
+					image="/contenidos/images/preferences.png" >
+			<text>Modificar</text>
+			<title>Modificar fichero</title>
+			<style>action</style>
+			<onClick>onUpdate</onClick>
+		</row-action>
+		<row-action name="webRefence" 
+					image="/contenidos/images/webref.png"> 
+			<text>Referencias</text>
+			<title>Referencias en la web</title>
+			<style>action</style>
+			<onClick>onReference</onClick>
+		</row-action>
+		<row-action name="borracompartido" 
+					image="/portal/images/cancel.png">
+			<text>Anular</text>
+			<title>Anular compartición</title>
+			<style>action</style>
+			<onClick>onDelete</onClick>
+		</row-action>
+		<global-action name="Multimedia" 
+					   image="images/multimedia.png" >
+			<text>Multimedia</text>
+			<title>Multimedia</title>
+			<style>menu</style>
+			<onClick>javascript:ajaxPopup("sharedMultimedia.do");</onClick>
+		</global-action>
+		<global-action name="Imagen" 
+					   image="images/vista-imagenes.png" >
+			<text>Imagen</text>
+			<title>Imagen</title>
+			<style>menu</style>
+			<onClick>javascript:ajaxPopup("sharedMiniatures.do");</onClick>
+		</global-action>
+	</actions>
+</grid>

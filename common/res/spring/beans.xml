@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<!-- Business objects -->
+	<bean id="UsuariosBO" class="common.business.bo.impl.UsuariosBOImpl">
+	</bean>
+	<bean id="GruposBO" class="common.business.bo.impl.GruposBOImpl">
+	</bean>
+	<bean id="ZonasBO" class="common.business.bo.impl.ZonasBOImpl">
+	</bean>
+	<bean id="MenusBO" class="common.business.bo.impl.MenusBOImpl">
+	</bean>
+	<bean id="UrlsBO" class="common.business.bo.impl.UrlsBOImpl">
+	</bean>
+	<bean id="UtilsBO" class="common.business.bo.impl.UtilsBOImpl">
+	</bean>
+	<bean id="SessionsBO" class="common.business.bo.impl.SessionsBOImpl">
+	</bean>
+	<bean id="UsuariosGruposBO" class="common.business.bo.impl.UsuariosGruposBOImpl">
+	</bean>
+	<bean id="UrlsGruposBO" class="common.business.bo.impl.UrlsGruposBOImpl">
+	</bean>
+	<bean id="GruposMenusBO" class="common.business.bo.impl.GruposMenusBOImpl">
+	</bean>
+	<bean id="BugsBO" class="common.business.bo.impl.BugsBOImpl">
+	</bean>
+	<bean id="AvisosBO" class="common.business.bo.impl.AvisosBOImpl">
+	</bean>
+	<bean id="EstadosRelacionUsuariosBO" class="common.business.bo.impl.EstadosRelacionUsuariosBOImpl">
+	</bean>
+	<bean id="RelacionesUsuariosBO" class="common.business.bo.impl.RelacionesUsuariosBOImpl">
+	</bean>
+</beans>

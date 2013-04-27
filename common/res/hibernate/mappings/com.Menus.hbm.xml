@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 21-dic-2008 0:17:08 by Hibernate Tools 3.2.4.CR1 -->
+<hibernate-mapping>
+    <class name="common.business.beans.Menus" table="menus" catalog="system">
+        <id name="menPk" type="java.lang.Long">
+            <column name="men_pk" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="menus" class="common.business.beans.Menus" fetch="select">
+            <column name="men_fk">
+                <comment>Parent</comment>
+            </column>
+        </many-to-one>
+        <property name="menUkCodigo" type="string">
+            <column name="men_uk_codigo" length="10" not-null="true" unique="true" />
+        </property>
+        <property name="menDescripcion" type="string">
+            <column name="men_descripcion" length="200" not-null="true" />
+        </property>
+        <property name="menTitulo" type="string">
+            <column name="men_titulo" length="200" not-null="true" />
+        </property>
+        <property name="urlFk" type="java.lang.Long">
+            <column name="url_fk" />
+        </property>
+        <property name="menOrden" type="int">
+            <column name="men_orden" />
+        </property>
+        <property name="menIcon" type="string">
+            <column name="men_icon" length="50" />
+        </property>
+        <property name="menPopup" type="char">
+            <column name="men_popup" not-null="true" default="N"/>
+        </property>
+        <property name="menRestringido" type="char">
+            <column name="men_restringido" not-null="true" default="N"/>
+        </property>
+        <set name="menuses" inverse="true">
+            <key>
+                <column name="men_fk">
+                    <comment>Parent</comment>
+                </column>
+            </key>
+            <one-to-many class="common.business.beans.Menus" />
+        </set>
+    </class>
+</hibernate-mapping>

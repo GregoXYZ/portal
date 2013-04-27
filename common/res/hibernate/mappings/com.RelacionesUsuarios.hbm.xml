@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 21-mar-2009 0:58:22 by Hibernate Tools 3.2.4.GA -->
+<hibernate-mapping>
+    <class name="common.business.beans.RelacionesUsuarios" table="relaciones_usuarios" catalog="system">
+        <id name="relUsuPk" type="java.lang.Long">
+            <column name="rel_usu_pk" />
+            <generator class="identity" />
+        </id>
+        <property name="estRelUsuFk" type="java.lang.Long">
+            <column name="est_rel_usu_fk" not-null="true" />
+        </property>
+        <property name="usu1Fk" type="java.lang.Long">
+            <column name="usu_1_fk" not-null="true" />
+        </property>
+        <property name="usu2Fk" type="java.lang.Long">
+            <column name="usu_2_fk" not-null="true" />
+        </property>
+        <property name="relUsuFechaRelacion" type="java.lang.Long">
+            <column name="rel_usu_fecha_relacion" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>

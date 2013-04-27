@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.password">enter</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/system</property>
+        <property name="hibernate.connection.username">adm_portal</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <mapping resource="hibernate/mappings/com.UsuariosGrupos.hbm.xml" />
+        <mapping resource="hibernate/mappings/com.GruposMenus.hbm.xml" />
+        <mapping resource="hibernate/mappings/com.Usuarios.hbm.xml" />
+        <mapping resource="hibernate/mappings/com.Grupos.hbm.xml" />
+        <mapping resource="hibernate/mappings/com.Queries.hbm.xml" />
+        <mapping resource="hibernate/mappings/com.Urls.hbm.xml" />
+        <mapping resource="hibernate/mappings/com.UrlsGrupos.hbm.xml" />
+        <mapping resource="hibernate/mappings/com.Menus.hbm.xml" />
+        <mapping resource="hibernate/mappings/com.Zonas.hbm.xml" />
+        <mapping resource="hibernate/mappings/com.Sessions.hbm.xml" />
+        <mapping resource="hibernate/mappings/com.Bugs.hbm.xml" />
+        <mapping resource="hibernate/mappings/com.Avisos.hbm.xml" />
+        <mapping resource="hibernate/mappings/com.TiposAvisos.hbm.xml" />
+        <mapping resource="hibernate/mappings/com.BugEstados.hbm.xml" />
+        <mapping resource="hibernate/mappings/com.BugPrioridades.hbm.xml" />
+        <mapping resource="hibernate/mappings/com.RelacionesUsuarios.hbm.xml" />
+        <mapping resource="hibernate/mappings/com.EstadosRelacionUsuarios.hbm.xml" />
+        <mapping resource="hibernate/mappings/com.Mails.hbm.xml" />
+    </session-factory>
+</hibernate-configuration>

@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17-dic-2008 22:46:15 by Hibernate Tools 3.2.4.CR1 -->
+<hibernate-mapping>
+    <class name="common.business.beans.Usuarios" table="usuarios" catalog="system">
+        <id name="usuPk" type="java.lang.Long">
+            <column name="usu_pk" />
+            <generator class="identity" />
+        </id>
+        <property name="usuUkCodigo" type="string">
+            <column name="usu_uk_codigo" length="30" not-null="true" unique="true" />
+        </property>
+        <property name="usuNombre" type="string">
+            <column name="usu_nombre" length="100" not-null="true" />
+        </property>
+        <property name="usuApellido1" type="string">
+            <column name="usu_apellido1" length="100" />
+        </property>
+        <property name="usuApellido2" type="string">
+            <column name="usu_apellido2" length="100" />
+        </property>
+        <property name="usuContrasena" type="string">
+            <column name="usu_contrasena" length="100" not-null="true" />
+        </property>
+        <property name="usuFechaBaja" type="java.lang.Long">
+            <column name="usu_fecha_baja" length="19" />
+        </property>
+        <property name="usuMail" type="string">
+            <column name="usu_mail" length="100" not-null="true" />
+        </property>
+        <property name="usuActivo" type="boolean">
+            <column name="usu_activo" not-null="true" />
+        </property>
+        <property name="usuAvatar" type="binary">
+            <column name="usu_avatar" />
+        </property>
+        <set name="usuariosGruposes" inverse="true">
+            <key>
+                <column name="usu_fk" not-null="true" />
+            </key>
+            <one-to-many class="common.business.beans.UsuariosGrupos" />
+        </set>
+        <property name="usuPublicable" type="boolean">
+            <column name="usu_publicable" not-null="true" default="true"/>
+        </property>
+        <property name="usuRecibeAviso" type="boolean">
+            <column name="usu_recibe_aviso" not-null="true" default="false"/>
+        </property>
+    </class>
+</hibernate-mapping>

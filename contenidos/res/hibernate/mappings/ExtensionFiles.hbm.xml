@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="business.beans.ExtensionFiles" table="extension_files" catalog="contenidos">
+        <id name="extFilPk" type="java.lang.Long">
+            <column name="ext_fil_pk" />
+            <generator class="identity" />
+        </id>
+        <property name="extFilCode" type="string">
+            <column name="ext_fil_code" length="10" not-null="true" />
+        </property>
+        <property name="mimTypFk" type="number">
+            <column name="mim_typ_fk" not-null="true" />
+        </property>
+        <property name="extFilIcon" type="string">
+            <column name="ext_fil_icon" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 23-abr-2009 23:40:24 by Hibernate Tools 3.2.4.GA -->
+<hibernate-mapping>
+    <class name="business.beans.Tags" table="tags" catalog="contenidos">
+        <id name="tagPk" type="java.lang.Long">
+            <column name="tag_pk" />
+            <generator class="identity" />
+        </id>
+        <property name="tagUkCodigo" type="string">
+            <column name="tag_uk_codigo" length="25" not-null="true" />
+        </property>
+        <property name="tagCount" type="java.lang.Long">
+            <column name="tag_count" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

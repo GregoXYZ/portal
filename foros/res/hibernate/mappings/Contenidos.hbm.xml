@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 18-may-2009 23:56:12 by Hibernate Tools 3.2.4.GA -->
+<hibernate-mapping>
+    <class name="business.beans.Contenidos" table="contenidos" catalog="foros">
+        <id name="conPk" type="java.lang.Long">
+            <column name="con_pk" />
+            <generator class="identity" />
+        </id>
+        <property name="conData" type="string">
+            <column name="con_data" length="16777215" not-null="true" />
+        </property>
+        <property name="conFechaAlta" type="java.lang.Long">
+            <column name="con_fecha_alta" not-null="true" />
+        </property>
+        <property name="entFk" type="java.lang.Long">
+            <column name="ent_fk" not-null="true" />
+        </property>
+        <property name="usuFk" type="java.lang.Long">
+            <column name="usu_fk" not-null="true" />
+        </property>
+        <property name="conFk" type="java.lang.Long">
+            <column name="con_fk" />
+        </property>
+    </class>
+</hibernate-mapping>

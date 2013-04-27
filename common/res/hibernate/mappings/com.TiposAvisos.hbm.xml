@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 20-mar-2009 18:35:21 by Hibernate Tools 3.2.4.GA -->
+<hibernate-mapping>
+    <class name="common.business.beans.TiposAvisos" table="tipos_avisos" catalog="system">
+        <id name="tipAviPk" type="integer">
+            <column name="tip_avi_pk" />
+            <generator class="identity" />
+        </id>
+        <property name="tipAviUkCodigo" type="string">
+            <column name="tip_avi_uk_codigo" length="25" not-null="true" />
+        </property>
+        <property name="tipAviDescripcion" type="string">
+            <column name="tip_avi_descripcion" length="250" />
+        </property>
+        <property name="tipAviEnviaMail" type="boolean">
+            <column name="tip_avi_envia_mail" not-null="true" default="false"/>
+        </property>
+    </class>
+</hibernate-mapping>
