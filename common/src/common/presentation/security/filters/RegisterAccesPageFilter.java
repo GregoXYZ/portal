@@ -74,6 +74,7 @@ public class RegisterAccesPageFilter implements Filter {
 	private boolean isExcluded(String page) {
 		StringTokenizer excludedUris = new StringTokenizer(filterConfig.getInitParameter("excludedPages"), ",");
 		boolean isExcluded = false;
+		
 		if(page!=null && !page.equals("")) {
 			while(excludedUris.hasMoreTokens()) {
 				String pattern = excludedUris.nextToken();
