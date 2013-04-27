@@ -21,7 +21,7 @@ import common.presentation.util.WebInfoHelper;
 public class ExceptionHandler extends org.apache.struts.action.ExceptionHandler    
 {   
 
-	private static String lastUri;
+	private String lastUri;
 	
 	public ActionForward execute(Exception exception, ExceptionConfig config,                      
            ActionMapping mapping, ActionForm form, HttpServletRequest request,    
@@ -40,6 +40,7 @@ public class ExceptionHandler extends org.apache.struts.action.ExceptionHandler
 			} catch (IOException e) {
 				WebInfoHelper.getInstance().setSystemError(request, e);
 				return mapping.findForward("errorNoControlado");   
+			} finally {
 			}
 			return null;   
 	    }

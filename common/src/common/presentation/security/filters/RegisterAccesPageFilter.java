@@ -24,7 +24,7 @@ public class RegisterAccesPageFilter implements Filter {
 	 */
 	private static final Log logger = LogFactory.getLog(RegisterAccesPageFilter.class);
     
-    private static PathMatcher matcher;
+    private PathMatcher matcher;
     
     private FilterConfig filterConfig;
 

@@ -28,16 +28,14 @@ public class AvatarTag extends TagSupport {
 	private String userCode;
 	private Integer width;
 	private Integer height;
-	
-	private static StringBuffer html;
 
 	/**
 	 * Over-ride del metodo doEndTag
 	 */
 	public int doEndTag() throws JspException {
 
+		StringBuffer html = new StringBuffer();;
 		String userCode = null;
-		html = new StringBuffer();
 
        	try {
 			if ( userId != null )
